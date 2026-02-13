@@ -5,35 +5,36 @@
     <div class="max-w-md w-full animate-fade-in">
         
         <!-- Logo/Header -->
-        <div class="text-center mb-8">
-            <a href="{{ route('login') }}" class="inline-block">
-                <div class="inline-flex items-center space-x-3 mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/50">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        <div class="text-center mb-10">
+            <a href="{{ route('welcome') }}" class="inline-block group">
+                <div class="inline-flex items-center space-x-4 mb-6">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-2xl shadow-indigo-500/10 border border-slate-100 group-hover:scale-110 transition-transform duration-500">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <span class="text-2xl font-bold gradient-text">DataFusion AI</span>
+                    <span class="text-3xl font-black text-slate-900 tracking-tighter">DataFusion</span>
                 </div>
             </a>
-            <p class="text-slate-400">Create your account to get started</p>
+            <h1 class="text-xl font-bold text-slate-500 uppercase tracking-[0.2em]">Workspace Initiation</h1>
         </div>
 
         <!-- Registration Card -->
-        <div class="glass p-8 rounded-2xl border border-slate-800 shadow-2xl shadow-indigo-500/10">
-            <h2 class="text-2xl font-bold text-slate-100 text-center mb-6">Get Started Free</h2>
+        <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 shadow-2xl shadow-indigo-500/5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl -mr-16 -mt-16"></div>
+            <h2 class="text-2xl font-black text-slate-900 text-center mb-8 tracking-tight">Create Entity Profile</h2>
 
             <form action="{{ route('register') }}" method="POST" class="space-y-5">
                 @csrf
 
                 <!-- Name Field -->
                 <div>
-                    <label for="name" class="block text-sm font-medium text-slate-300 mb-2">
-                        Full Name
+                    <label for="name" class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">
+                        Operator Name
                     </label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-indigo-500">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                             </svg>
                         </div>
@@ -44,8 +45,8 @@
                             value="{{ old('name') }}"
                             required
                             autofocus
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('name') border-red-500 ring-2 ring-red-500/50 @enderror"
-                            placeholder="John Doe"
+                            class="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500/50 transition duration-300 @error('name') border-red-200 ring-4 ring-red-500/5 @enderror"
+                            placeholder="Alex Thorne"
                         >
                     </div>
                     @error('name')
@@ -60,12 +61,12 @@
 
                 <!-- Email Field -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">
-                        Email Address
+                    <label for="email" class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">
+                        Deployment Email
                     </label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-indigo-500">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
@@ -75,8 +76,8 @@
                             name="email" 
                             value="{{ old('email') }}"
                             required
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('email') border-red-500 ring-2 ring-red-500/50 @enderror"
-                            placeholder="john@example.com"
+                            class="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500/50 transition duration-300 @error('email') border-red-200 ring-4 ring-red-500/5 @enderror"
+                            placeholder="operator@datafusion.ai"
                         >
                     </div>
                     @error('email')
@@ -91,12 +92,12 @@
 
                 <!-- Password Field -->
                 <div>
-                    <label for="password" class="block text-sm font-medium text-slate-300 mb-2">
-                        Password
+                    <label for="password" class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">
+                        Secure Key
                     </label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-indigo-500">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                             </svg>
                         </div>
@@ -105,8 +106,8 @@
                             id="password" 
                             name="password" 
                             required
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('password') border-red-500 ring-2 ring-red-500/50 @enderror"
-                            placeholder="Minimum 8 characters"
+                            class="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500/50 transition duration-300 @error('password') border-red-200 ring-4 ring-red-500/5 @enderror"
+                            placeholder="••••••••••••"
                         >
                     </div>
                     @error('password')
@@ -128,13 +129,13 @@
 
                 <!-- Password Confirmation Field -->
                 <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-slate-300 mb-2">
-                        Confirm Password
+                    <label for="password_confirmation" class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">
+                        Verify Key
                     </label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-indigo-500">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <input 
@@ -142,8 +143,8 @@
                             id="password_confirmation" 
                             name="password_confirmation" 
                             required
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200"
-                            placeholder="Re-enter your password"
+                            class="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500/50 transition duration-300"
+                            placeholder="••••••••••••"
                         >
                     </div>
                 </div>
@@ -151,69 +152,62 @@
                 <!-- Submit Button -->
                 <button 
                     type="submit"
-                    class="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg font-semibold shadow-lg shadow-indigo-500/40 hover:shadow-indigo-500/60 transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                    class="w-full px-8 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black shadow-xl shadow-indigo-500/20 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center space-x-3"
                 >
-                    <span>Create Account</span>
+                    <span class="text-lg tracking-tight">Generate Workspace</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
                 </button>
 
                 <!-- Terms -->
-                <p class="text-xs text-center text-slate-500">
-                    By creating an account, you agree to our 
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Terms of Service</a> and 
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Privacy Policy</a>
+                <p class="text-[10px] text-center text-slate-400 font-bold uppercase tracking-widest">
+                    By initiating, you agree to our 
+                    <a href="#" class="text-indigo-600 hover:underline">Intelligence Terms</a> and 
+                    <a href="#" class="text-indigo-600 hover:underline">Privacy Charter</a>
                 </p>
             </form>
 
             <!-- Divider -->
-            <div class="relative my-6">
+            <div class="relative my-10">
                 <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-slate-800"></div>
+                    <div class="w-full border-t border-slate-100"></div>
                 </div>
-                <div class="relative flex justify-center text-sm">
-                    <span class="px-4 bg-slate-900 text-slate-500">Already have an account?</span>
+                <div class="relative flex justify-center text-xs">
+                    <span class="px-6 bg-white text-slate-400 font-bold uppercase tracking-[0.2em]">Established Node?</span>
                 </div>
             </div>
 
             <!-- Login Link -->
             <div class="text-center">
-                <p class="text-sm text-slate-400">
-                    <a href="{{ route('login') }}" class="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">
-                        Sign in instead →
-                    </a>
-                </p>
+                <a href="{{ route('login') }}" class="group inline-flex items-center space-x-2 text-sm font-black text-indigo-600 hover:text-indigo-700 transition-colors">
+                    <span>Member Recognition</span>
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
             </div>
         </div>
 
-        <!-- Features List -->
-        <div class="mt-6 glass p-4 rounded-xl border border-slate-800/50">
-            <p class="text-sm text-slate-400 font-medium mb-3 text-center">What you'll get:</p>
-            <div class="grid grid-cols-2 gap-3 text-xs text-slate-500">
-                <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span>5 API Connections</span>
+        <!-- Intelligence Grid Badge -->
+        <div class="mt-10 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-indigo-500/5 rounded-full blur-xl -mr-10 -mt-10 group-hover:bg-indigo-500/10 transition-colors"></div>
+            <div class="grid grid-cols-2 gap-6 relative z-10">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Multi-Node</span>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span>AI-Powered Insights</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span>Data Fusion Engine</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span>Secure Storage</span>
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">AI Synthesis</span>
                 </div>
             </div>
         </div>
