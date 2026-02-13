@@ -37,7 +37,7 @@
 
 ### 🎨 Premium UI/UX
 - Modern glassmorphism design
-- Dark theme with Tailwind CSS
+- Light theme with Tailwind CSS
 - Responsive layout
 - Intuitive navigation
 - Real-time status indicators
