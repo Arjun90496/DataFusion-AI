@@ -25,7 +25,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             
             $table->foreignId('fused_data_id')
-                ->constrained()
+                ->constrained('fused_data')
                 ->onDelete('cascade');
             
             // Insight content
