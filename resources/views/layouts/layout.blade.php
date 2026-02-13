@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,33 +18,31 @@
             theme: {
                 extend: {
                     colors: {
-                        // Custom indigo shades for dark theme
+                        // Custom indigo shades for light theme
                         'indigo': {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            200: '#c7d2fe',
-                            300: '#a5b4fc',
-                            400: '#818cf8',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            800: '#3730a3',
-                            900: '#312e81',
-                            950: '#1e1b4b',
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            200: '#d6e0ff',
+                            300: '#adc2ff',
+                            400: '#85a3ff',
+                            500: '#5c85ff',
+                            600: '#4f46e5', // Brand primary
+                            700: '#3730a3',
+                            800: '#2e2a85',
+                            900: '#1e1b4b',
                         },
-                        // Custom slate shades for dark backgrounds
+                        // Custom slate shades for light backgrounds
                         'slate': {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
+                            50: '#f8fafc', // App background
+                            100: '#f1f5f9', // Panel backgrounds
+                            200: '#e2e8f0', // Borders
+                            300: '#cbd5e1', // Dividers
+                            400: '#94a3b8', // Muted text
+                            500: '#64748b', // Labels
+                            600: '#475569', // Primary text
                             700: '#334155',
                             800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617',
+                            900: '#0f172a', // Heavy text
                         }
                     },
                     animation: {
@@ -64,8 +62,8 @@
                             '50%': { transform: 'translateY(-20px)' },
                         },
                         glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
-                            '100%': { boxShadow: '0 0 30px rgba(99, 102, 241, 0.6)' },
+                            '0%': { boxShadow: '0 0 20px rgba(79, 70, 229, 0.1)' },
+                            '100%': { boxShadow: '0 0 30px rgba(79, 70, 229, 0.2)' },
                         },
                         slideUp: {
                             '0%': { transform: 'translateY(30px)', opacity: '0' },
@@ -88,66 +86,69 @@
             scroll-behavior: smooth;
         }
         
-        /* Custom gradient background animation */
+        /* Custom gradient background animation for light theme */
         .gradient-bg {
-            background: linear-gradient(-45deg, #020617, #1e1b4b, #312e81, #0f172a);
+            background: linear-gradient(-45deg, #f8fafc, #e0e7ff, #f1f5f9, #ffffff);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
         }
         
-        /* Glassmorphism effect */
+        /* Light mode glassmorphism effect */
         .glass {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
         
-        /* Gradient text effect */
+        /* Vibrant gradient text effect */
         .gradient-text {
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            background: linear-gradient(135deg, #4f46e5 0%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        /* Enhanced focus states for accessibility */
+        /* Enhanced focus states */
         *:focus-visible {
-            outline: 2px solid #6366f1;
+            outline: 2px solid #4f46e5;
             outline-offset: 2px;
         }
         
-        /* Custom scrollbar for dark theme */
+        /* Light theme scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #0f172a;
+            background: #f1f5f9;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 5px;
+            background: #cbd5e1;
+            border-radius: 10px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+            background: #94a3b8;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+<body class="bg-slate-50 text-slate-700 min-h-screen antialiased">
     
-    <!-- Flash Messages - Dark Theme -->
+    <!-- Flash Messages - Light Theme -->
     @if (session('success'))
         <div class="fixed top-4 right-4 z-50 animate-slide-up">
-            <div class="glass bg-emerald-500/20 border-emerald-500/50 text-emerald-100 px-6 py-4 rounded-xl shadow-2xl shadow-emerald-500/20 flex items-center space-x-3 max-w-md">
-                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+            <div class="glass bg-white border-emerald-200 text-emerald-900 px-6 py-4 rounded-xl shadow-xl flex items-center space-x-3 max-w-md">
+                <div class="p-2 bg-emerald-100 rounded-lg text-emerald-600">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
                 <div>
-                    <p class="font-semibold">Success!</p>
-                    <p class="text-sm text-emerald-200">{{ session('success') }}</p>
+                    <p class="font-bold">Success</p>
+                    <p class="text-sm text-slate-600">{{ session('success') }}</p>
                 </div>
             </div>
         </div>
@@ -155,13 +156,15 @@
 
     @if (session('error'))
         <div class="fixed top-4 right-4 z-50 animate-slide-up">
-            <div class="glass bg-red-500/20 border-red-500/50 text-red-100 px-6 py-4 rounded-xl shadow-2xl shadow-red-500/20 flex items-center space-x-3 max-w-md">
-                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+            <div class="glass bg-white border-red-200 text-red-900 px-6 py-4 rounded-xl shadow-xl flex items-center space-x-3 max-w-md">
+                <div class="p-2 bg-red-100 rounded-lg text-red-600">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
                 <div>
-                    <p class="font-semibold">Error</p>
-                    <p class="text-sm text-red-200">{{ session('error') }}</p>
+                    <p class="font-bold">Error</p>
+                    <p class="text-sm text-slate-600">{{ session('error') }}</p>
                 </div>
             </div>
         </div>
@@ -169,13 +172,15 @@
 
     @if (session('info'))
         <div class="fixed top-4 right-4 z-50 animate-slide-up">
-            <div class="glass bg-blue-500/20 border-blue-500/50 text-blue-100 px-6 py-4 rounded-xl shadow-2xl shadow-blue-500/20 flex items-center space-x-3 max-w-md">
-                <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+            <div class="glass bg-white border-blue-200 text-blue-900 px-6 py-4 rounded-xl shadow-xl flex items-center space-x-3 max-w-md">
+                <div class="p-2 bg-blue-100 rounded-lg text-blue-600">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
                 <div>
-                    <p class="font-semibold">Info</p>
-                    <p class="text-sm text-blue-200">{{ session('info') }}</p>
+                    <p class="font-bold">Info</p>
+                    <p class="text-sm text-slate-600">{{ session('info') }}</p>
                 </div>
             </div>
         </div>

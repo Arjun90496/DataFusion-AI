@@ -6,13 +6,13 @@
     <!-- Main Container with Sidebar -->
     <div class="flex">
         
-        <!-- Sidebar Navigation (same as dashboard) -->
-        <aside class="fixed left-0 top-0 h-screen w-64 glass border-r border-slate-800 z-40">
-            <div class="flex flex-col h-full">
+        <!-- Sidebar Navigation -->
+        <aside class="fixed left-0 top-0 h-screen w-64 glass border-r border-slate-200 z-40">
+            <div class="flex flex-col h-full text-slate-700">
                 <!-- Logo -->
-                <div class="p-6 border-b border-slate-800">
+                <div class="p-6 border-b border-slate-100">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/50">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/20">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
@@ -22,13 +22,13 @@
                 </div>
 
                 <!-- User Profile -->
-                <div class="p-6 border-b border-slate-800">
+                <div class="p-6 border-b border-slate-100">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold shadow-md">
                             {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                         </div>
                         <div class="flex-1 min-w-0">
-                            <p class="text-sm font-semibold text-slate-200 truncate">{{ Auth::user()->name }}</p>
+                            <p class="text-sm font-bold text-slate-900 truncate">{{ Auth::user()->name }}</p>
                             <p class="text-xs text-slate-500 truncate">{{ Auth::user()->email }}</p>
                         </div>
                     </div>
@@ -37,42 +37,42 @@
                 <!-- Navigation Links -->
                 <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
                     <!-- Dashboard -->
-                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
+                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
                         <span class="font-medium">Dashboard</span>
                     </a>
 
                     <!-- API Keys (Active) -->
-                    <a href="{{ route('api-keys.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-indigo-600/20 border border-indigo-500/50 text-indigo-300 transition-colors">
+                    <a href="{{ route('api-keys.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-700 transition-colors shadow-sm">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
                         </svg>
-                        <span class="font-medium">API Keys</span>
+                        <span class="font-semibold">API Keys</span>
                     </a>
 
                     <!-- Other Links -->
-                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="{{ route('fusion.show') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
+                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
                         </svg>
                         <span class="font-medium">Data Fusion</span>
-                        <span class="ml-auto text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">Phase 6</span>
+                        <span class="ml-auto text-xs bg-indigo-100 text-indigo-700 font-bold px-2 py-1 rounded-full">Phase 6</span>
                     </a>
 
-                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="{{ route('insights.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
+                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                         </svg>
                         <span class="font-medium">AI Insights</span>
-                        <span class="ml-auto text-xs bg-pink-500/20 text-pink-300 px-2 py-1 rounded-full">Phase 7</span>
+                        <span class="ml-auto text-xs bg-purple-100 text-purple-700 font-bold px-2 py-1 rounded-full">Phase 7</span>
                     </a>
 
-                    <div class="pt-4 pb-2"><div class="border-t border-slate-800"></div></div>
+                    <div class="pt-4 pb-2"><div class="border-t border-slate-100"></div></div>
 
-                    <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="{{ route('settings.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
+                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
@@ -81,14 +81,14 @@
                 </nav>
 
                 <!-- Logout Button -->
-                <div class="p-4 border-t border-slate-800">
+                <div class="p-4 border-t border-slate-100">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors">
+                        <button type="submit" class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-500 hover:text-red-600 hover:bg-red-50 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                             </svg>
-                            <span class="font-medium">Logout</span>
+                            <span class="font-semibold">Logout</span>
                         </button>
                     </form>
                 </div>
@@ -96,16 +96,16 @@
         </aside>
 
         <!-- Main Content Area -->
-        <main class="flex-1 ml-64">
+        <main class="flex-1 ml-64 bg-slate-50/50 min-h-screen">
             <!-- Top Navigation Bar -->
-            <nav class="glass border-b border-slate-800 sticky top-0 z-30">
+            <nav class="glass border-b border-slate-200 sticky top-0 z-30">
                 <div class="px-8 py-4 flex items-center justify-between">
                     <div>
-                        <h1 class="text-2xl font-bold text-slate-100">API Key Management</h1>
-                        <p class="text-sm text-slate-400">Securely manage your external API credentials</p>
+                        <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">API Key Management</h1>
+                        <p class="text-sm font-medium text-slate-500">Securely manage your external API credentials</p>
                     </div>
                     
-                    <button onclick="toggleModal('addModal')" class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg font-semibold shadow-lg shadow-indigo-500/40 hover:shadow-indigo-500/60 transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+                    <button onclick="toggleModal('addModal')" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold shadow-lg shadow-indigo-500/20 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center space-x-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                         </svg>
@@ -115,99 +115,105 @@
             </nav>
 
             <!-- Content -->
-            <div class="p-8 space-y-6">
+            <div class="p-8 space-y-8">
                 
                 @if(count($apiKeys) > 0)
                     <!-- API Keys Grid -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         @foreach($apiKeys as $key)
-                            <div class="glass p-6 rounded-2xl border border-slate-800 hover:border-{{ $key['provider']['color'] }}-500/50 transition-all duration-300">
+                            <div class="glass p-8 rounded-3xl border border-slate-200 hover:border-{{ $key['provider']['color'] }}-400 hover:shadow-xl hover:shadow-{{ $key['provider']['color'] }}-500/5 transition-all duration-500 overflow-hidden relative group">
+                                <!-- Background Glow Decoration -->
+                                <div class="absolute -top-24 -right-24 w-48 h-48 bg-{{ $key['provider']['color'] }}-500/5 rounded-full blur-3xl group-hover:bg-{{ $key['provider']['color'] }}-500/10 transition-colors duration-500"></div>
+
                                 <!-- Header -->
-                                <div class="flex items-start justify-between mb-4">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="p-3 bg-{{ $key['provider']['color'] }}-500/10 rounded-lg">
+                                <div class="flex items-start justify-between mb-6 relative z-10">
+                                    <div class="flex items-start space-x-5">
+                                        <div class="p-4 bg-{{ $key['provider']['color'] }}-50 rounded-2xl border border-{{ $key['provider']['color'] }}-100 shadow-sm group-hover:scale-110 transition-transform duration-500">
                                             <!-- Provider Icon -->
                                             @if($key['provider']['icon'] == 'cloud')
-                                                <svg class="w-6 h-6 text-{{ $key['provider']['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-7 h-7 text-{{ $key['provider']['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
                                                 </svg>
                                             @elseif($key['provider']['icon'] == 'newspaper')
-                                                <svg class="w-6 h-6 text-{{ $key['provider']['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-7 h-7 text-{{ $key['provider']['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
                                                 </svg>
                                             @elseif($key['provider']['icon'] == 'sparkles')
-                                                <svg class="w-6 h-6 text-{{ $key['provider']['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-7 h-7 text-{{ $key['provider']['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                                                 </svg>
                                             @elseif($key['provider']['icon'] == 'code')
-                                                <svg class="w-6 h-6 text-{{ $key['provider']['color'] }}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-7 h-7 text-{{ $key['provider']['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                                 </svg>
                                             @endif
                                         </div>
                                         
                                         <div>
-                                            <h3 class="font-bold text-slate-100 mb-1">{{ $key['name'] }}</h3>
-                                            <p class="text-sm text-slate-400">{{ $key['provider']['name'] }}</p>
+                                            <h3 class="font-bold text-slate-900 text-lg mb-0.5 tracking-tight">{{ $key['name'] }}</h3>
+                                            <p class="text-sm font-semibold text-{{ $key['provider']['color'] }}-600">{{ $key['provider']['name'] }}</p>
                                         </div>
                                     </div>
                                     
                                     <!-- Status Toggle -->
-                                    <form action="{{ route('api-keys.toggle', $key['id']) }}" method="POST" class="inline">
+                                    <form action="{{ route('api-keys.toggle', $key['id']) }}" method="POST" class="inline relative z-10">
                                         @csrf
-                                        <button type="submit" class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors {{ $key['is_enabled'] ? 'bg-indigo-600' : 'bg-slate-700' }}">
-                                            <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform {{ $key['is_enabled'] ? 'translate-x-6' : 'translate-x-1' }}"></span>
+                                        <button type="submit" class="relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 {{ $key['is_enabled'] ? 'bg-indigo-600' : 'bg-slate-300' }} hover:opacity-90">
+                                            <span class="inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform duration-300 {{ $key['is_enabled'] ? 'translate-x-6' : 'translate-x-1' }}"></span>
                                         </button>
                                     </form>
                                 </div>
 
                                 <!-- Masked Key -->
-                                <div class="mb-4 p-3 bg-slate-900/50 rounded-lg border border-slate-700">
-                                    <div class="flex items-center space-x-2">
-                                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                                        </svg>
-                                        <code class="text-sm font-mono text-slate-300">{{ $key['masked_key'] }}</code>
+                                <div class="mb-6 p-4 bg-slate-50/50 rounded-2xl border border-slate-100 flex items-center justify-between group/key transition-colors hover:bg-slate-100/50 relative z-10">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="p-1.5 bg-white rounded-lg shadow-sm">
+                                            <svg class="w-4 h-4 text-slate-400 group-hover/key:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                            </svg>
+                                        </div>
+                                        <code class="text-xs font-mono text-slate-500 font-bold tracking-wider">{{ $key['masked_key'] }}</code>
+                                    </div>
+                                    <div class="px-2 py-1 bg-white text-[10px] font-bold text-slate-400 rounded border border-slate-100 shadow-sm opacity-0 group-hover/key:opacity-100 transition-opacity uppercase tracking-tighter">Encrypted</div>
+                                </div>
+
+                                <!-- Status Badge & Metadata -->
+                                <div class="flex items-center justify-between mb-6 relative z-10">
+                                    <div>
+                                        @if($key['status'] == 'active')
+                                            <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 text-xs font-bold ring-4 ring-emerald-500/5">
+                                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                                                <span>Active</span>
+                                            </span>
+                                        @elseif($key['status'] == 'error')
+                                            <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-50 text-red-700 border border-red-100 text-xs font-bold ring-4 ring-red-500/5">
+                                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                                <span>Error</span>
+                                            </span>
+                                        @else
+                                            <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-100 text-xs font-bold ring-4 ring-amber-500/5">
+                                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                                                <span>Pending Test</span>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex flex-col items-end">
+                                        <span class="mb-0.5">Last used: <span class="text-slate-600">{{ $key['last_used_at'] ?? 'Never' }}</span></span>
+                                        <span>Added: <span class="text-slate-600">{{ $key['created_at'] }}</span></span>
                                     </div>
                                 </div>
 
-                                <!-- Status Badge -->
-                                <div class="mb-4">
-                                    @if($key['status'] == 'active')
-                                        <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-sm">
-                                            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                                            <span>Active</span>
-                                        </span>
-                                    @elseif($key['status'] == 'error')
-                                        <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-500/20 text-red-300 text-sm">
-                                            <span class="w-2 h-2 bg-red-500 rounded-full"></span>
-                                            <span>Error</span>
-                                        </span>
-                                    @else
-                                        <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-sm">
-                                            <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
-                                            <span>Pending Test</span>
-                                        </span>
-                                    @endif
-                                </div>
-
-                                <!-- Metadata -->
-                                <div class="flex items-center justify-between text-xs text-slate-600 mb-4">
-                                    <span>Last used: {{ $key['last_used_at'] ?? 'Never' }}</span>
-                                    <span>Added {{ $key['created_at'] }}</span>
-                                </div>
-
                                 <!-- Actions -->
-                                <div class="flex space-x-2">
-                                    <button onclick="openEditModal({{ json_encode($key) }})" class="flex-1 px-4 py-2 glass border border-sl ate-700 hover:border-indigo-500/50 text-slate-300 hover:text-indigo-300 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2">
+                                <div class="flex space-x-3 relative z-10">
+                                    <button onclick="openEditModal({{ json_encode($key) }})" class="flex-1 px-4 py-2.5 bg-white border border-slate-200 hover:border-indigo-500/50 hover:bg-indigo-50/50 text-slate-700 hover:text-indigo-700 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center space-x-2 shadow-sm">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                         </svg>
-                                        <span>Edit</span>
+                                        <span>Edit Key</span>
                                     </button>
                                     
-                                    <button onclick="confirmDelete({{ $key['id'] }}, '{{ $key['name'] }}')" class="px-4 py-2 glass border border-slate-700 hover:border-red-500/50 text-slate-300 hover:text-red-300 rounded-lg font-semibold transition-all duration-300">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <button onclick="confirmDelete({{ $key['id'] }}, '{{ $key['name'] }}')" class="p-2.5 bg-white border border-slate-200 hover:border-red-500/50 hover:bg-red-50/50 text-slate-400 hover:text-red-600 rounded-xl transition-all duration-300 shadow-sm">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                         </svg>
                                     </button>
@@ -217,29 +223,35 @@
                     </div>
                 @else
                     <!-- Empty State -->
-                    <div class="glass p-16 rounded-2xl border-2 border-dashed border-slate-700 text-center">
-                        <svg class="w-20 h-20 mx-auto text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                        </svg>
-                        <h3 class="text-2xl font-bold text-slate-300 mb-3">No API Keys Yet</h3>
-                        <p class="text-slate-500 mb-6">Add your first API key to start fetching data from external services</p>
-                        <button onclick="toggleModal('addModal')" class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg font-semibold shadow-lg shadow-indigo-500/40 transition-all duration-300 hover:scale-105">
-                            Add Your First API Key
+                    <div class="glass p-20 rounded-3xl border-2 border-dashed border-slate-200 text-center bg-white/50">
+                        <div class="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner ring-8 ring-indigo-50/50 animate-bounce-slow">
+                            <svg class="w-12 h-12 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">No API Keys Yet</h3>
+                        <p class="text-slate-500 max-w-sm mx-auto mb-8 font-medium">Connect your favorite data sources to start fusing intelligence. It takes less than a minute.</p>
+                        <button onclick="toggleModal('addModal')" class="px-10 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold shadow-xl shadow-indigo-500/30 transition-all duration-300 hover:scale-105 active:scale-95 group">
+                            <span>Add Your First API Key</span>
+                            <svg class="w-5 h-5 inline-block ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
                         </button>
                     </div>
                 @endif
 
                 <!-- Security Notice -->
-                <div class="glass p-6 rounded-xl border border-indigo-500/30">
-                    <div class="flex items-start space-x-4">
-                        <div class="p-3 bg-indigo-500/10 rounded-lg">
-                            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass p-8 rounded-3xl border border-indigo-100 bg-white/50 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-indigo-500/10 transition-colors"></div>
+                    <div class="flex items-start space-x-5 relative z-10">
+                        <div class="p-4 bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-500/20 text-white">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-slate-100 mb-2">🔒 Your Keys Are Secure</h4>
-                            <p class="text-sm text-slate-400">All API keys are encrypted using AES-256 encryption before being stored. Your keys are never exposed in plaintext to the frontend or logs.</p>
+                            <h4 class="font-bold text-slate-900 text-lg mb-1">🔒 Your Keys Are Secure</h4>
+                            <p class="text-sm font-medium text-slate-500 leading-relaxed max-w-2xl">All API keys are encrypted using bank-grade AES-256-GCM encryption before being stored in our vault. Your keys are never exposed in plaintext to the frontend, logs, or our support team.</p>
                         </div>
                     </div>
                 </div>
@@ -249,65 +261,89 @@
 </div>
 
 <!-- Add API Key Modal -->
-<div id="addModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center">
-    <div class="glass p-8 rounded-2xl border border-slate-700 max-w-md w-full mx-4 animate-fade-in">
-        <div class="flex items-center justify-between mb-6">
-            <h2 class="text-2xl font-bold text-slate-100">Add API Key</h2>
-            <button onclick="toggleModal('addModal')" class="text-slate-400 hover:text-slate-200 transition-colors">
+<div id="addModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 max-w-lg w-full shadow-2xl animate-modal-in relative overflow-hidden">
+        <!-- Glow Decoration -->
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl"></div>
+        
+        <div class="flex items-center justify-between mb-8 relative z-10">
+            <div>
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Add API Key</h2>
+                <p class="text-sm font-medium text-slate-500 mt-1">Connect a new service to DataFusion</p>
+            </div>
+            <button onclick="toggleModal('addModal')" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-all">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
 
-        <form action="{{ route('api-keys.store') }}" method="POST" class="space-y-4">
+        <form action="{{ route('api-keys.store') }}" method="POST" class="space-y-6 relative z-10">
             @csrf
             
             <!-- Provider Selection -->
             <div>
-                <label class="block text-sm font-semibold text-slate-300 mb-2">API Provider</label>
-                <select name="api_provider_id" required class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
-                    <option value="">Select a provider...</option>
-                    @foreach($providers as $provider)
-                        <option value="{{ $provider->id }}">{{ $provider->name }}</option>
-                    @endforeach
-                </select>
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">API Provider</label>
+                <div class="relative group">
+                    <select name="api_provider_id" required class="w-full px-5 py-4 bg-slate-50 border border-slate-200 text-slate-900 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all appearance-none font-medium">
+                        <option value="">Select a provider...</option>
+                        @foreach($providers as $provider)
+                            <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
                 @error('api_provider_id')
-                    <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs font-bold mt-2 ml-1 flex items-center">
+                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"/></svg>
+                        {{ $message }}
+                    </p>
                 @enderror
             </div>
 
             <!-- Name -->
             <div>
-                <label class="block text-sm font-semibold text-slate-300 mb-2">Nickname</label>
-                <input type="text" name="name" required placeholder="My Weather API" class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">Key Nickname</label>
+                <input type="text" name="name" required placeholder="e.g. Production Weather Key" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all font-medium">
                 @error('name')
-                    <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs font-bold mt-2 ml-1 flex items-center">
+                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"/></svg>
+                        {{ $message }}
+                    </p>
                 @enderror
             </div>
 
             <!-- API Key -->
             <div>
-                <label class="block text-sm font-semibold text-slate-300 mb-2">API Key</label>
-                <input type="text" name="api_key" required placeholder="sk-proj-..." class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition font-mono text-sm">
-                <p class="text-xs text-slate-500 mt-2 flex items-center space-x-1">
-                    <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">API Key Content</label>
+                <div class="relative">
+                    <input type="password" name="api_key" required placeholder="••••••••••••••••" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all font-mono text-sm tracking-widest">
+                </div>
+                <div class="mt-3 p-3 bg-indigo-50 border border-indigo-100 rounded-xl flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-indigo-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                     </svg>
-                    <span>Your key will be encrypted before storage</span>
-                </p>
+                    <p class="text-[11px] font-bold text-indigo-700 leading-tight uppercase tracking-tighter">Your key is encrypted instantly with AES-256-GCM before it ever hits our database.</p>
+                </div>
                 @error('api_key')
-                    <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs font-bold mt-2 ml-1 flex items-center">
+                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"/></svg>
+                        {{ $message }}
+                    </p>
                 @enderror
             </div>
 
             <!-- Actions -->
-            <div class="flex space-x-3 pt-4">
-                <button type="button" onclick="toggleModal('addModal')" class="flex-1 px-6 py-3 glass border border-slate-700 hover:border-slate-600 text-slate-300 rounded-lg font-semibold transition-all">
+            <div class="flex space-x-4 pt-4">
+                <button type="button" onclick="toggleModal('addModal')" class="flex-1 px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-2xl font-bold transition-all active:scale-95 uppercase tracking-widest text-xs">
                     Cancel
                 </button>
-                <button type="submit" class="flex-1 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg font-semibold shadow-lg shadow-indigo-500/40 transition-all duration-300">
-                    Save Key
+                <button type="submit" class="flex-1 px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold shadow-xl shadow-indigo-500/20 transition-all active:scale-95 uppercase tracking-widest text-xs">
+                    Securely Save
                 </button>
             </div>
         </form>
@@ -315,28 +351,100 @@
 </div>
 
 <!-- Delete Confirmation Modal -->
-<div id="deleteModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center">
-    <div class="glass p-8 rounded-2xl border border-red-500/30 max-w-md w-full mx-4">
-        <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<div id="deleteModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-white p-10 rounded-[2.5rem] border border-red-100 max-w-md w-full shadow-2xl animate-modal-in">
+        <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 ring-8 ring-red-50/50">
+                <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                 </svg>
             </div>
-            <h2 class="text-2xl font-bold text-slate-100 mb-2">Delete API Key?</h2>
-            <p class="text-slate-400" id="deleteKeyName"></p>
-            <p class="text-sm text-red-400 mt-2">This action cannot be undone.</p>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">Delete Key?</h2>
+            <p class="text-slate-500 font-medium px-4" id="deleteKeyName"></p>
+            <div class="mt-4 inline-block px-3 py-1 bg-red-50 text-red-600 text-[10px] font-bold uppercase tracking-widest rounded-full">Permanent Action</div>
         </div>
 
-        <form id="deleteForm" method="POST" class="flex space-x-3">
+        <form id="deleteForm" method="POST" class="flex space-x-4">
             @csrf
             @method('DELETE')
-            <button type="button" onclick="toggleModal('deleteModal')" class="flex-1 px-6 py-3 glass border border-slate-700 hover:border-slate-600 text-slate-300 rounded-lg font-semibold transition-all">
-                Cancel
+            <button type="button" onclick="toggleModal('deleteModal')" class="flex-1 px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-2xl font-bold transition-all active:scale-95 uppercase tracking-widest text-xs">
+                Keep Key
             </button>
-            <button type="submit" class="flex-1 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-all">
-                Delete
+            <button type="submit" class="flex-1 px-6 py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-bold shadow-xl shadow-red-500/20 transition-all active:scale-95 uppercase tracking-widest text-xs">
+                Confirm Delete
             </button>
+        </form>
+    </div>
+</div>
+
+<!-- Edit API Key Modal -->
+<div id="editModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 max-w-lg w-full shadow-2xl animate-modal-in relative overflow-hidden">
+        <!-- Glow Decoration -->
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl"></div>
+        
+        <div class="flex items-center justify-between mb-8 relative z-10">
+            <div>
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Edit API Key</h2>
+                <p class="text-sm font-medium text-slate-500 mt-1">Update your service credentials</p>
+            </div>
+            <button onclick="toggleModal('editModal')" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <form id="editForm" method="POST" class="space-y-6 relative z-10">
+            @csrf
+            @method('PUT')
+            
+            <!-- Provider (Read Only) -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">API Provider</label>
+                <div class="relative">
+                    <input type="text" id="edit_provider_name" readonly class="w-full px-5 py-4 bg-slate-100 border border-slate-200 text-slate-400 rounded-2xl cursor-not-allowed font-bold">
+                    <div class="absolute right-5 top-1/2 -translate-y-1/2">
+                        <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Name -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">Key Nickname</label>
+                <input type="text" name="name" id="edit_name" required placeholder="Nickname" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all font-medium">
+                @error('name')
+                    <p class="text-red-500 text-xs font-bold mt-2 ml-1 flex items-center">
+                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"/></svg>
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+
+            <!-- API Key (Optional Update) -->
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">Update API Key <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest ml-1">(Optional)</span></label>
+                <input type="password" name="api_key" placeholder="••••••••••••••••" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 text-slate-900 rounded-2xl placeholder:text-slate-400 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all font-mono text-sm tracking-widest">
+                <div class="mt-3 p-3 bg-indigo-50 border border-indigo-100 rounded-xl flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-indigo-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-[11px] font-bold text-indigo-700 leading-tight uppercase tracking-tighter">Leave this field blank to keep your current encrypted key securely stored.</p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex space-x-4 pt-4">
+                <button type="button" onclick="toggleModal('editModal')" class="flex-1 px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-2xl font-bold transition-all active:scale-95 uppercase tracking-widest text-xs">
+                    Cancel
+                </button>
+                <button type="submit" class="flex-1 px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold shadow-xl shadow-indigo-500/20 transition-all active:scale-95 uppercase tracking-widest text-xs">
+                    Update Securely
+                </button>
+            </div>
         </form>
     </div>
 </div>
@@ -356,8 +464,10 @@
     }
 
     function openEditModal(key) {
-        // For now, show alert - in future, create edit modal
-        alert(`Edit functionality: Would edit "${key.name}"\nImplement edit modal similar to add modal.`);
+        document.getElementById('edit_name').value = key.name;
+        document.getElementById('edit_provider_name').value = key.provider.name;
+        document.getElementById('editForm').action = `/api-keys/${key.id}`;
+        toggleModal('editModal');
     }
 
     // Close modals on escape key

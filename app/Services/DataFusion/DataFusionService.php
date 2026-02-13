@@ -57,13 +57,18 @@ class DataFusionService
             $fusedPayload['markets'] ?? null,
         ]));
         
-        $primaryLocation = $fusedPayload['environment']['location']['name'] ?? null;
+        $primaryLocation = $fusedPayload['environment']['data']['location']['name'] ?? null;
+        
+        // Calculate payload size for storage tracking
+        $payloadJson = json_encode($fusedPayload);
+        $sizeBytes = strlen($payloadJson);
         
         // Save to database
         $fusedData = FusedData::create([
             'user_id' => $user->id,
             'payload' => $fusedPayload,
             'sources_count' => $sourcesCount,
+            'size_bytes' => $sizeBytes,
             'primary_location' => $primaryLocation,
             'fused_at' => now(),
         ]);

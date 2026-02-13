@@ -77,22 +77,55 @@ class User extends Authenticatable
     }
 
     /**
-     * ADDITIONAL METHODS YOU'LL USE:
-     * 
-     * 1. Find user by email:
-     *    User::where('email', 'john@example.com')->first()
-     * 
-     * 2. Create new user:
-     *    User::create([
-     *        'name' => 'John Doe',
-     *        'email' => 'john@example.com',
-     *        'password' => Hash::make('password123')
-     *    ]);
-     * 
-     * 3. Get all users:
-     *    User::all()
-     * 
-     * 4. Get specific user:
-     *    User::find(1) // finds user with id = 1
+     * Relationship: A user has many API keys
      */
+    public function apiKeys()
+    {
+        return $this->hasMany(ApiKey::class);
+    }
+
+    /**
+     * Relationship: A user has many fused datasets
+     */
+    public function fusedData()
+    {
+        return $this->hasMany(FusedData::class);
+    }
+
+    /**
+     * Relationship: A user has many AI insights
+     */
+    public function aiInsights()
+    {
+        return $this->hasMany(AiInsight::class);
+    }
+
+    /**
+     * Relationship: A user has many activities
+     */
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+    /**
+     * Helper: Log a new activity for the user
+     * 
+     * @param string $type
+     * @param string $description
+     * @param string $icon
+     * @param string $color
+     * @param string|null $link
+     * @return Activity
+     */
+    public function logActivity($type, $description, $icon = 'info-circle', $color = 'indigo', $link = null)
+    {
+        return $this->activities()->create([
+            'type' => $type,
+            'description' => $description,
+            'icon' => $icon,
+            'color' => $color,
+            'link' => $link,
+        ]);
+    }
 }

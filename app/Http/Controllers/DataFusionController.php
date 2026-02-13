@@ -32,6 +32,15 @@ class DataFusionController extends Controller
             if (!$fusedData) {
                 return back()->with('error', 'No active API keys found. Please add and enable API keys first.');
             }
+
+            // Log activity
+            $user->logActivity(
+                'data_fusion',
+                "Generated a new data fusion snapshot with {$fusedData->sources_count} sources",
+                'sparkles',
+                'purple',
+                route('fusion.show')
+            );
             
             return back()->with('success', 'Data fusion completed successfully!');
             
@@ -40,6 +49,14 @@ class DataFusionController extends Controller
                 'user_id' => $user->id,
                 'error' => $e->getMessage(),
             ]);
+
+            // Log error activity
+            $user->logActivity(
+                'fusion_error',
+                "Failed to generate fusion: " . $e->getMessage(),
+                'exclamation-triangle',
+                'red'
+            );
             
             return back()->with('error', 'Failed to generate fusion: ' . $e->getMessage());
         }
@@ -56,13 +73,8 @@ class DataFusionController extends Controller
             ->latest('fused_at')
             ->first();
         
-        if (!$fusedData) {
-            return redirect()->route('dashboard')
-                ->with('info', 'No fusion data available yet. Generate your first fusion!');
-        }
-        
         // Load AI insights for this fusion data
-        $aiInsight = \App\Models\AiInsight::where('fused_data_id', $fusedData->id)->first();
+        $aiInsight = $fusedData ? \App\Models\AiInsight::where('fused_data_id', $fusedData->id)->first() : null;
         
         return view('fusion.show', compact('fusedData', 'aiInsight'));
     }

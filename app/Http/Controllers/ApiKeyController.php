@@ -106,6 +106,15 @@ class ApiKeyController extends Controller
             'is_enabled' => true,
             'status' => 'pending',  // Will be tested later
         ]);
+
+        // Log activity
+        Auth::user()->logActivity(
+            'api_added',
+            "Added new API key: {$apiKey->name} ({$apiKey->provider->name})",
+            'plus-circle',
+            'green',
+            route('api-keys.index')
+        );
         
         return redirect()->route('api-keys.index')
             ->with('success', 'API key added successfully! You can now use it to fetch data.');
@@ -229,8 +238,28 @@ class ApiKeyController extends Controller
         
         try {
             $result = $apiKey->fetch($request->all());
+
+            // Log activity
+            Auth::user()->logActivity(
+                'api_fetch',
+                "Fetched data from {$apiKey->name}",
+                'download',
+                'blue'
+            );
+
+            // Mark key as used
+            $apiKey->markAsUsed();
+
             return response()->json($result->toArray(), $result->statusCode);
         } catch (\Exception $e) {
+            // Log error activity
+            Auth::user()->logActivity(
+                'api_error',
+                "Failed to fetch data from {$apiKey->name}: {$e->getMessage()}",
+                'exclamation-triangle',
+                'red'
+            );
+
             return response()->json([
                 'success' => false,
                 'message' => $e->getMessage()

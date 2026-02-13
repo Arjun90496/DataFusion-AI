@@ -69,6 +69,11 @@ class ApiProviderSeeder extends Seeder
             ],
         ];
 
-        DB::table('api_providers')->insert($providers);
+        foreach ($providers as $provider) {
+            DB::table('api_providers')->updateOrInsert(
+                ['slug' => $provider['slug']],
+                $provider
+            );
+        }
     }
 }

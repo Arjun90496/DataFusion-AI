@@ -21,6 +21,7 @@ class FusedData extends Model
         'user_id',
         'payload',
         'sources_count',
+        'size_bytes',
         'primary_location',
         'fused_at',
     ];

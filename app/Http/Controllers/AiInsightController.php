@@ -19,6 +19,20 @@ class AiInsightController extends Controller
     {
         $this->aiService = $aiService;
     }
+
+    /**
+     * Display a listing of user insights
+     */
+    public function index()
+    {
+        $user = Auth::user();
+        $insights = \App\Models\AiInsight::where('user_id', $user->id)
+            ->with('fusedData')
+            ->latest()
+            ->paginate(10);
+            
+        return view('insights.index', compact('insights'));
+    }
     
     /**
      * Generate AI insights for the latest fusion data
@@ -46,6 +60,14 @@ class AiInsightController extends Controller
             
             // Generate insights
             $insight = $this->aiService->generateInsights($fusedData);
+
+            // Log activity
+            $user->logActivity(
+                'insight_generated',
+                "AI generated new insights from latest data fusion",
+                'lightbulb',
+                'purple'
+            );
             
             return back()->with('success', 'AI insights generated successfully!');
             

@@ -24,11 +24,7 @@ class AiInsightService
     
     public function __construct()
     {
-        $this->apiKey = config('services.openai.api_key');
-        
-        if (empty($this->apiKey)) {
-            throw new \Exception('OpenAI API key not configured. Please set OPENAI_API_KEY in .env');
-        }
+        $this->apiKey = config('services.openai.api_key') ?? '';
     }
     
     /**
@@ -44,11 +40,21 @@ class AiInsightService
         // Build prompt from fused data
         $prompt = $this->buildPrompt($fusedData->payload);
         
-        // Call OpenAI API
-        $response = $this->callOpenAI($prompt);
-        
-        // Parse response
-        $insights = $this->parseResponse($response);
+        // Call OpenAI API or use fallback if no key
+        if (!empty($this->apiKey)) {
+            try {
+                $response = $this->callOpenAI($prompt);
+                $insights = $this->parseResponse($response);
+                $tokensUsed = $response['usage']['total_tokens'] ?? 0;
+            } catch (\Exception $e) {
+                Log::warning("AI service failed, using fallback: " . $e->getMessage());
+                $insights = $this->generateFallbackInsights($fusedData->payload);
+                $tokensUsed = 0;
+            }
+        } else {
+            $insights = $this->generateFallbackInsights($fusedData->payload);
+            $tokensUsed = 0;
+        }
         
         // Save to database
         $aiInsight = AiInsight::create([
@@ -58,8 +64,8 @@ class AiInsightService
             'trends' => $insights['trends'] ?? [],
             'recommendations' => $insights['recommendations'] ?? [],
             'sentiment' => $insights['sentiment'] ?? 'neutral',
-            'tokens_used' => $response['usage']['total_tokens'] ?? 0,
-            'model_used' => $this->model,
+            'tokens_used' => $tokensUsed,
+            'model_used' => empty($this->apiKey) ? 'rule-based-engine' : $this->model,
         ]);
         
         Log::info("AI insights generated successfully", [
@@ -213,5 +219,63 @@ class AiInsightService
                 'sentiment' => 'neutral',
             ];
         }
+    }
+
+    /**
+     * Generate rule-based insights when AI is unavailable
+     * 
+     * @param array $payload
+     * @return array
+     */
+    protected function generateFallbackInsights(array $payload): array
+    {
+        $insights = [
+            'summary' => 'Data analysis completed successfully across ' . ($payload['fusion_metadata']['successful_sources'] ?? 0) . ' sources.',
+            'trends' => [],
+            'recommendations' => [],
+            'sentiment' => 'neutral',
+        ];
+
+        // Basic weather analysis
+        if (isset($payload['environment']['data'])) {
+            $weather = $payload['environment']['data'];
+            $temp = $weather['current']['temperature'] ?? 20;
+            
+            if ($temp > 30) {
+                $insights['trends'][] = "High temperature warning detected.";
+                $insights['recommendations'][] = "Monitor cooling systems during heat period.";
+                $insights['sentiment'] = 'negative';
+            } elseif ($temp < 5) {
+                $insights['trends'][] = "Cold weather front approaching.";
+                $insights['sentiment'] = 'neutral';
+            }
+        }
+
+        // Basic news analysis
+        if (isset($payload['briefing']['data']['articles'])) {
+            $count = count($payload['briefing']['data']['articles']);
+            $insights['trends'][] = "High volume of news activity ({$count} sources).";
+        }
+
+        // Basic crypto analysis
+        if (isset($payload['markets']['data']['data'])) {
+            $cryptos = $payload['markets']['data']['data'];
+            foreach ($cryptos as $crypto) {
+                $change = $crypto['change_24h'] ?? 0;
+                if ($change > 5) {
+                    $insights['trends'][] = strtoupper($crypto['id']) . " is showing strong bullish momentum (+$change%).";
+                    $insights['sentiment'] = 'positive';
+                } elseif ($change < -5) {
+                    $insights['trends'][] = strtoupper($crypto['id']) . " is experiencing a significant correction ($change%).";
+                    $insights['sentiment'] = 'negative';
+                }
+            }
+        }
+
+        if (empty($insights['trends'])) {
+            $insights['trends'][] = "Stable conditions observed across all data points.";
+        }
+
+        return $insights;
     }
 }

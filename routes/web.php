@@ -8,6 +8,7 @@ use App\Http\Controllers\ApiKeyController;
 use App\Http\Controllers\DataFusionController;
 use App\Http\Controllers\AiInsightController;
 use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\SettingsController;
 
 /**
  * Web Routes for DataFusion AI
@@ -114,19 +115,24 @@ Route::middleware('auth')->group(function () {
     Route::post('/api-keys/{apiKey}/toggle', [ApiKeyController::class, 'toggle'])->name('api-keys.toggle');
     Route::get('/api-keys/{apiKey}/fetch', [ApiKeyController::class, 'fetchData'])->name('api-keys.fetch');
     
-    // Data Fusion Routes (Rate Limited: 10 per hour)
-    Route::middleware('throttle:10,60')->group(function () {
+    // Data Fusion Routes (Relaxed for development: 100 per hour)
+    Route::middleware('throttle:100,60')->group(function () {
         Route::post('/fusion/generate', [DataFusionController::class, 'generate'])->name('fusion.generate');
     });
     Route::get('/fusion', [DataFusionController::class, 'show'])->name('fusion.show');
     
-    // AI Insights Routes (Rate Limited: 5 per hour)
-    Route::middleware('throttle:5,60')->group(function () {
+    // AI Insights Routes (Relaxed for development: 100 per hour)
+    Route::get('/insights', [AiInsightController::class, 'index'])->name('insights.index');
+    Route::middleware('throttle:100,60')->group(function () {
         Route::post('/insights/generate', [AiInsightController::class, 'generate'])->name('insights.generate');
     });
     
     // Monitoring Routes
     Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
+
+    // Settings Routes
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
 
 /*
