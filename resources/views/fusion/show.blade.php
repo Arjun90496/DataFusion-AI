@@ -5,78 +5,7 @@
 @section('content')
 <div class="min-h-screen bg-slate-50/50">
     <!-- Sidebar -->
-    <aside class="fixed left-0 top-0 h-screen w-64 glass border-r border-slate-200 z-40">
-        <div class="flex flex-col h-full text-slate-700">
-            <!-- Logo -->
-            <div class="p-6 border-b border-slate-100">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-lg font-bold gradient-text">DataFusion AI</span>
-                </div>
-            </div>
-
-            <!-- Navigation -->
-            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-                <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                    <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                    </svg>
-                    <span class="font-medium">Dashboard</span>
-                </a>
-
-                <a href="{{ route('api-keys.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                    <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                    </svg>
-                    <span class="font-medium">API Keys</span>
-                </a>
-
-                <a href="{{ route('fusion.show') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-700 transition-colors shadow-sm">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-                    </svg>
-                    <span class="font-semibold">Data Fusion</span>
-                    <span class="ml-auto text-xs bg-indigo-100 text-indigo-700 font-bold px-2 py-1 rounded-full">Phase 6</span>
-                </a>
-
-                <a href="{{ route('insights.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                    <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                    </svg>
-                    <span class="font-medium">AI Insights</span>
-                    <span class="ml-auto text-xs bg-purple-100 text-purple-700 font-bold px-2 py-1 rounded-full">Phase 7</span>
-                </a>
-
-                <!-- Divider -->
-                <div class="pt-4 pb-2"><div class="border-t border-slate-100"></div></div>
-
-                <a href="{{ route('settings.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                    <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <span class="font-medium">Settings</span>
-                </a>
-            </nav>
-
-            <!-- Logout -->
-            <div class="p-4 border-t border-slate-100">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-500 hover:text-red-600 hover:bg-red-50 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                        </svg>
-                        <span class="font-semibold">Logout</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </aside>
+    @include('layouts.partials.sidebar')
 
     <!-- Main Content -->
     <main class="ml-64 p-8">
@@ -84,7 +13,7 @@
             <!-- Empty State -->
             <div class="h-[calc(100vh-4rem)] flex flex-col items-center justify-center text-center">
                 <div class="w-24 h-24 bg-indigo-50 rounded-[2rem] flex items-center justify-center mb-8 shadow-inner ring-8 ring-indigo-50/50 animate-bounce-slow">
-                    <svg class="w-12 h-12 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
                     </svg>
                 </div>
@@ -114,12 +43,12 @@
                 </div>
                 <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
                     <div class="p-2 bg-slate-50 rounded-lg">
-                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Last Updated</p>
+                        <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest leading-none mb-1">Last Updated</p>
                         <p class="text-sm font-bold text-slate-900 leading-none">{{ $fusedData->fused_at->diffForHumans() }}</p>
                     </div>
                 </div>
@@ -137,8 +66,8 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Total Sources</p>
-                            <p class="text-2xl font-black text-slate-900">{{ $fusedData->sources_count }} <span class="text-sm font-bold text-slate-400">APIs</span></p>
+                            <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-0.5">Total Sources</p>
+                            <p class="text-2xl font-black text-slate-900">{{ $fusedData->sources_count }} <span class="text-sm font-bold text-slate-600">APIs</span></p>
                         </div>
                     </div>
                     
@@ -150,7 +79,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Primary Location</p>
+                            <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-0.5">Primary Location</p>
                             <p class="text-2xl font-black text-slate-900 truncate max-w-[150px]">{{ $fusedData->primary_location ?? 'Global' }}</p>
                         </div>
                     </div>
@@ -162,7 +91,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">System Status</p>
+                            <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-0.5">System Status</p>
                             <div class="flex items-center space-x-2">
                                 <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
                                 <span class="text-xl font-black text-emerald-600">Sync Active</span>
@@ -171,6 +100,85 @@
                     </div>
                 </div>
             </div>
+
+            <!-- AI Insights (Prioritized) -->
+            @if($aiInsight)
+            <div class="glass p-8 rounded-3xl border border-slate-200 mb-8 bg-white/50 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-pink-500/5 rounded-full blur-3xl -mr-24 -mt-24"></div>
+                
+                <div class="flex items-center justify-between mb-8 relative z-10">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-pink-50 rounded-2xl border border-pink-100 text-pink-600 shadow-sm shadow-pink-500/10">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Intelligence Highlights</h2>
+                            <p class="text-sm font-medium text-slate-500">Cross-source correlation and analysis</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        @php
+                            $sentimentColors = ['emerald' => ['bg' => '#f0fdf4', 'text' => '#059669', 'border' => '#dcfce7'], 'red' => ['bg' => '#fef2f2', 'text' => '#dc2626', 'border' => '#fecaca'], 'slate' => ['bg' => '#f8fafc', 'text' => '#475569', 'border' => '#e2e8f0']];
+                            $colors = $sentimentColors[$aiInsight->sentimentColor] ?? $sentimentColors['slate'];
+                        @endphp
+                        <span class="text-[10px] font-bold uppercase tracking-widest rounded-full border shadow-sm px-3 py-1" style="background-color: {{ $colors['bg'] }}; color: {{ $colors['text'] }}; border-color: {{ $colors['border'] }};">
+                            Sentiment: {{ ucfirst($aiInsight->sentiment) }}
+                        </span>
+                        <span class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{{ $aiInsight->tokens_used }} tokens</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-6 relative z-10">
+                    <!-- Summary -->
+                    <div class="bg-indigo-50/30 p-6 rounded-2xl border border-indigo-100 shadow-inner">
+                        <h3 class="text-xs font-bold text-indigo-900 uppercase tracking-widest mb-3 opacity-60">Executive Summary</h3>
+                        <p class="text-slate-800 font-medium leading-relaxed">{{ $aiInsight->summary }}</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Trends -->
+                        @if($aiInsight->trends && count($aiInsight->trends) > 0)
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <h3 class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-4">Detected Trends</h3>
+                            <ul class="space-y-3">
+                                @foreach($aiInsight->trends as $trend)
+                                <li class="flex items-start space-x-3 group/trend">
+                                    <div class="mt-1 w-5 h-5 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-500 flex-shrink-0 group-hover/trend:bg-indigo-600 group-hover/trend:text-white transition-all duration-300">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm font-semibold text-slate-700 leading-tight">{{ $trend }}</span>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        
+                        <!-- Recommendations -->
+                        @if($aiInsight->recommendations && count($aiInsight->recommendations) > 0)
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <h3 class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-4">Action Plan</h3>
+                            <ul class="space-y-3">
+                                @foreach($aiInsight->recommendations as $recommendation)
+                                <li class="flex items-start space-x-3 group/rec">
+                                    <div class="mt-1 w-5 h-5 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-500 flex-shrink-0 group-hover/rec:bg-emerald-600 group-hover/rec:text-white transition-all duration-300">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm font-semibold text-slate-700 leading-tight">{{ $recommendation }}</span>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endif
 
             <!-- Environment (Weather) -->
             @if($fusedData->weather)
@@ -198,20 +206,20 @@
                 @php $weather = $fusedData->weather['data']; @endphp
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
                     <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm group/item hover:border-amber-200 transition-colors">
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Temperature</p>
-                        <p class="text-3xl font-black text-slate-900">{{ $weather['current']['temperature'] ?? 'N/A' }}<span class="text-lg text-slate-400 font-bold ml-1">°C</span></p>
+                        <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2">Temperature</p>
+                        <p class="text-3xl font-black text-slate-900">{{ $weather['current']['temperature'] ?? 'N/A' }}<span class="text-lg text-slate-600 font-bold ml-1">°C</span></p>
                     </div>
                     <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm group/item hover:border-amber-200 transition-colors">
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Condition</p>
+                        <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2">Condition</p>
                         <p class="text-xl font-extrabold text-slate-900 line-clamp-1">{{ ucfirst($weather['weather']['description'] ?? 'N/A') }}</p>
                     </div>
                     <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm group/item hover:border-amber-200 transition-colors">
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Humidity</p>
-                        <p class="text-3xl font-black text-slate-900">{{ $weather['current']['humidity'] ?? 'N/A' }}<span class="text-lg text-slate-400 font-bold ml-1">%</span></p>
+                        <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2">Humidity</p>
+                        <p class="text-3xl font-black text-slate-900">{{ $weather['current']['humidity'] ?? 'N/A' }}<span class="text-lg text-slate-600 font-bold ml-1">%</span></p>
                     </div>
                     <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm group/item hover:border-amber-200 transition-colors">
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Wind Velocity</p>
-                        <p class="text-3xl font-black text-slate-900">{{ $weather['wind']['speed'] ?? 'N/A' }}<span class="text-xs text-slate-400 font-bold ml-1 uppercase">m/s</span></p>
+                        <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2">Wind Velocity</p>
+                        <p class="text-3xl font-black text-slate-900">{{ $weather['wind']['speed'] ?? 'N/A' }}<span class="text-xs text-slate-600 font-bold ml-1 uppercase">m/s</span></p>
                     </div>
                 </div>
             </div>
@@ -248,10 +256,10 @@
                         <p class="text-sm text-slate-500 font-medium mb-4 leading-relaxed">{{ Str::limit($article['description'] ?? 'Detailed analysis available for this briefing piece.', 180) }}</p>
                         <div class="flex items-center justify-between pt-4 border-t border-slate-50">
                             <div class="flex items-center space-x-2">
-                                <div class="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-400 border border-slate-200 uppercase">{{ substr($article['source']['name'] ?? 'U', 0, 1) }}</div>
-                                <span class="text-xs font-bold text-slate-400 uppercase tracking-tighter">{{ $article['source']['name'] ?? 'Global Source' }}</span>
+                                <div class="w-6 h-6 bg-slate-100 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-600 border border-slate-200 uppercase">{{ substr($article['source']['name'] ?? 'U', 0, 1) }}</div>
+                                <span class="text-xs font-bold text-slate-600 uppercase tracking-tighter">{{ $article['source']['name'] ?? 'Global Source' }}</span>
                             </div>
-                            <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{{ $article['author'] ? 'By ' . Str::limit($article['author'], 20) : 'Verified Intelligence' }}</span>
+                            <span class="text-[10px] font-bold text-slate-700 uppercase tracking-widest">{{ $article['author'] ? 'By ' . Str::limit($article['author'], 20) : 'Verified Intelligence' }}</span>
                         </div>
                     </div>
                     @endforeach
@@ -287,10 +295,10 @@
                     @foreach($crypto['data'] ?? [] as $coin)
                     <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:border-emerald-200 hover:shadow-md transition-all duration-300 flex items-center justify-between group/coin">
                         <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center font-black text-slate-400 text-xs border border-slate-100 group-hover/coin:bg-emerald-50 group-hover/coin:text-emerald-500 transition-colors uppercase">{{ $coin['id'] }}</div>
+                            <div class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center font-black text-slate-600 text-xs border border-slate-100 group-hover/coin:bg-emerald-50 group-hover/coin:text-emerald-500 transition-colors uppercase">{{ $coin['id'] }}</div>
                             <div>
                                 <h3 class="font-bold text-slate-900 uppercase tracking-wide">{{ $coin['id'] }}</h3>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ number_format($coin['market_cap'] ?? 0, 0) }} MCAP</p>
+                                <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{{ number_format($coin['market_cap'] ?? 0, 0) }} MCAP</p>
                             </div>
                         </div>
                         <div class="text-right">
@@ -312,81 +320,6 @@
             </div>
             @endif
 
-            <!-- AI Insights -->
-            @if($aiInsight)
-            <div class="glass p-8 rounded-3xl border border-slate-200 mb-8 bg-white/50 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-48 h-48 bg-pink-500/5 rounded-full blur-3xl -mr-24 -mt-24"></div>
-                
-                <div class="flex items-center justify-between mb-8 relative z-10">
-                    <div class="flex items-center space-x-4">
-                        <div class="p-3 bg-pink-50 rounded-2xl border border-pink-100 text-pink-600 shadow-sm shadow-pink-500/10">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">AI Insights</h2>
-                            <p class="text-sm font-medium text-slate-500">Cross-source correlation and analysis</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <span class="px-3 py-1 bg-{{ $aiInsight->sentimentColor }}-50 text-{{ $aiInsight->sentimentColor }}-700 text-[10px] font-bold uppercase tracking-widest rounded-full border border-{{ $aiInsight->sentimentColor }}-100 shadow-sm">
-                            Sentiment: {{ ucfirst($aiInsight->sentiment) }}
-                        </span>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $aiInsight->tokens_used }} tokens</span>
-                    </div>
-                </div>
-                
-                <div class="space-y-6 relative z-10">
-                    <!-- Summary -->
-                    <div class="bg-indigo-50/30 p-6 rounded-2xl border border-indigo-100 shadow-inner">
-                        <h3 class="text-xs font-bold text-indigo-900 uppercase tracking-widest mb-3 opacity-60">Executive Summary</h3>
-                        <p class="text-slate-800 font-medium leading-relaxed">{{ $aiInsight->summary }}</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Trends -->
-                        @if($aiInsight->trends && count($aiInsight->trends) > 0)
-                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Detected Trends</h3>
-                            <ul class="space-y-3">
-                                @foreach($aiInsight->trends as $trend)
-                                <li class="flex items-start space-x-3 group/trend">
-                                    <div class="mt-1 w-5 h-5 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-500 flex-shrink-0 group-hover/trend:bg-indigo-600 group-hover/trend:text-white transition-all duration-300">
-                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                        </svg>
-                                    </div>
-                                    <span class="text-sm font-semibold text-slate-700 leading-tight">{{ $trend }}</span>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                        
-                        <!-- Recommendations -->
-                        @if($aiInsight->recommendations && count($aiInsight->recommendations) > 0)
-                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Action Plan</h3>
-                            <ul class="space-y-3">
-                                @foreach($aiInsight->recommendations as $recommendation)
-                                <li class="flex items-start space-x-3 group/rec">
-                                    <div class="mt-1 w-5 h-5 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-500 flex-shrink-0 group-hover/rec:bg-emerald-600 group-hover/rec:text-white transition-all duration-300">
-                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <span class="text-sm font-semibold text-slate-700 leading-tight">{{ $recommendation }}</span>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            @endif
-
             <!-- Action Buttons -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Generate New Fusion -->
@@ -398,37 +331,34 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 leading-tight">Force Synchronization</h3>
-                            <p class="text-sm font-medium text-slate-500">Re-fetch data from all enabled providers</p>
+                            <h3 class="text-lg font-bold text-slate-900 leading-tight">Unified Refresh</h3>
+                            <p class="text-sm font-medium text-slate-500">Sync all sources and regenerate AI insights</p>
                         </div>
                     </div>
                     <form action="{{ route('fusion.generate') }}" method="POST">
                         @csrf
                         <button type="submit" class="w-full px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-bold shadow-lg shadow-indigo-500/20 transition-all duration-300 hover:scale-[1.02] active:scale-95">
-                            Generate New Fusion Snapshot
+                            Regenerate Fusion & AI Analysis
                         </button>
                     </form>
                 </div>
                 
-                <!-- Generate AI Insights -->
+                <!-- History Link -->
                 <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
                     <div class="flex items-center space-x-4 mb-6">
                         <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 border border-pink-100">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 leading-tight">Advanced AI Analysis</h3>
-                            <p class="text-sm font-medium text-slate-500">Generate intelligent patterns from fusion data</p>
+                            <h3 class="text-lg font-bold text-slate-900 leading-tight">Strategic Archive</h3>
+                            <p class="text-sm font-medium text-slate-500">Review historical insights and trends</p>
                         </div>
                     </div>
-                    <form action="{{ route('insights.generate') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="w-full px-6 py-4 {{ $aiInsight ? 'bg-slate-100 text-slate-400 cursor-not-allowed shadow-none border border-slate-200' : 'bg-pink-600 hover:bg-pink-700 text-white shadow-lg shadow-pink-500/20 hover:scale-[1.02]' }} rounded-2xl font-bold transition-all duration-300 active:scale-95" {{ (!$fusedData || $aiInsight) ? 'disabled' : '' }}>
-                            {{ $aiInsight ? 'Insights Already Generated' : 'Generate AI Insights' }}
-                        </button>
-                    </form>
+                    <a href="{{ route('insights.index') }}" class="w-full block text-center px-6 py-4 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold hover:bg-slate-50 transition-all duration-300 hover:scale-[1.02] active:scale-95">
+                        View Insight History
+                    </a>
                 </div>
             </div>
         @endif

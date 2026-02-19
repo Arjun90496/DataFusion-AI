@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@theme {
+    /* ============================================================
+       PALETTE — LIGHT THEME
+       #FFFFFF  White       — page / card backgrounds
+       #E5E5E5  Light Gray  — borders, dividers, input backgrounds
+       #FCA311  Orange      — brand / accent / CTA
+       #14213D  Navy        — headings, sidebar, primary text
+       #000000  Black       — darkest text / deep contrast
+    ============================================================ */
+
+    /* --- "indigo" → Orange brand scale (#FCA311)
+       Used by: buttons, links, focus rings, active states         */
+    --color-indigo-50: #FFF8E6;
+    --color-indigo-100: #FEEFC4;
+    --color-indigo-200: #FDE0A0;
+    --color-indigo-300: #FCD07C;
+    --color-indigo-400: #FCBC4C;
+    --color-indigo-500: #FCA311;
+    --color-indigo-600: #FCA311;
+    /* primary brand                */
+    --color-indigo-700: #E8930A;
+    /* hover / active               */
+    --color-indigo-800: #C47A07;
+    /* pressed                      */
+    --color-indigo-900: #14213D;
+    /* deep accent → navy           */
+
+    /* --- "purple" → Orange accent (gradient stops, badges)      */
+    --color-purple-50: #FFF5E0;
+    --color-purple-100: #FEEAC0;
+    --color-purple-200: #FDDA9A;
+    --color-purple-300: #FCCA74;
+    --color-purple-400: #FBB54E;
+    --color-purple-500: #FCA311;
+    --color-purple-600: #E8930A;
+    --color-purple-700: #C47A07;
+    --color-purple-800: #14213D;
+    --color-purple-900: #0F1A30;
+
+    /* --- "slate" → Light-theme grays with navy dark end
+       50–200  : white / light gray backgrounds & borders
+       400–500 : muted labels
+       600–900 : navy → black body text & headings                 */
+    --color-slate-50: #FFFFFF;
+    /* page background              */
+    --color-slate-100: #F5F5F5;
+    /* panel / card background      */
+    --color-slate-200: #E5E5E5;
+    /* borders / dividers           */
+    --color-slate-300: #CCCCCC;
+    /* input borders                */
+    --color-slate-400: #9CA3AF;
+    /* placeholder / muted text     */
+    --color-slate-500: #6B7280;
+    /* secondary labels             */
+    --color-slate-600: #374151;
+    /* body text                    */
+    --color-slate-700: #1F2937;
+    /* stronger body text           */
+    --color-slate-800: #14213D;
+    /* navy — headings / sidebar    */
+    --color-slate-900: #000000;
+    /* pure black — display text    */
+
+    /* --- Named brand / surface tokens                           */
+    --color-navy: #14213D;
+    --color-navy-light: #1E2E50;
+    --color-navy-dark: #0D1526;
+    --color-brand: #FCA311;
+    --color-brand-light: #FECF73;
+    --color-brand-dark: #E8930A;
+    --color-surface: #E5E5E5;
+
+    /* --- Animations                                             */
+    --animate-gradient: gradient 8s linear infinite;
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-glow: glow 2s ease-in-out infinite alternate;
+    --animate-slide-up: slideUp 0.5s ease-out;
+    --animate-fade-in: fadeIn 0.6s ease-out;
+
+    @keyframes gradient {
+
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    @keyframes glow {
+        0% {
+            box-shadow: 0 0 20px rgba(252, 163, 17, 0.12);
+        }
+
+        100% {
+            box-shadow: 0 0 35px rgba(252, 163, 17, 0.30);
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+/* ── Global ─────────────────────────────────────────────────── */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ── Light animated gradient background ─────────────────────── */
+.gradient-bg {
+    background: linear-gradient(-45deg, #ffffff, #FFF8E6, #F5F5F5, #FEEFC4);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+/* ── Glassmorphism — clean white glass card ─────────────────── */
+.glass {
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(229, 229, 229, 0.80);
+    box-shadow: 0 4px 24px rgba(20, 33, 61, 0.08);
+}
+
+/* ── Orange gradient text ────────────────────────────────────── */
+.gradient-text {
+    background: linear-gradient(135deg, #FCA311 0%, #E8930A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Focus ring (orange) ─────────────────────────────────────── */
+*:focus-visible {
+    outline: 2px solid #FCA311;
+    outline-offset: 2px;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E5E5E5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FCA311;
+}

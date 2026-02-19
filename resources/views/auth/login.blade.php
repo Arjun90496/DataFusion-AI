@@ -16,19 +16,19 @@
                     <span class="text-2xl font-bold gradient-text">DataFusion AI</span>
                 </div>
             </a>
-            <p class="text-slate-400">Sign in to your account</p>
+            <p class="text-slate-600">Sign in to your account</p>
         </div>
 
         <!-- Login Card -->
-        <div class="glass p-8 rounded-2xl border border-slate-800 shadow-2xl shadow-indigo-500/10">
-            <h2 class="text-2xl font-bold text-slate-100 text-center mb-6">Welcome Back</h2>
+        <div class="glass p-8 rounded-2xl border border-slate-200 shadow-xl shadow-indigo-500/5">
+            <h2 class="text-2xl font-bold text-slate-900 text-center mb-6">Welcome Back</h2>
 
             <form action="{{ route('login') }}" method="POST" class="space-y-5">
                 @csrf
 
                 <!-- Email Field -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">
+                    <label for="email" class="block text-sm font-medium text-slate-700 mb-2">
                         Email Address
                     </label>
                     <div class="relative">
@@ -44,7 +44,7 @@
                             value="{{ old('email') }}"
                             required
                             autofocus
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('email') border-red-500 ring-2 ring-red-500/50 @enderror"
+                            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 text-slate-900 rounded-lg placeholder:text-slate-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('email') border-red-500 ring-2 ring-red-500/50 @enderror"
                             placeholder="john@example.com"
                         >
                     </div>
@@ -60,7 +60,7 @@
 
                 <!-- Password Field -->
                 <div>
-                    <label for="password" class="block text-sm font-medium text-slate-300 mb-2">
+                    <label for="password" class="block text-sm font-medium text-slate-700 mb-2">
                         Password
                     </label>
                     <div class="relative">
@@ -74,7 +74,7 @@
                             id="password" 
                             name="password" 
                             required
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('password') border-red-500 ring-2 ring-red-500/50 @enderror"
+                            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 text-slate-900 rounded-lg placeholder:text-slate-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('password') border-red-500 ring-2 ring-red-500/50 @enderror"
                             placeholder="Enter your password"
                         >
                     </div>
@@ -95,13 +95,13 @@
                             type="checkbox" 
                             id="remember" 
                             name="remember" 
-                            class="w-4 h-4 bg-slate-900/50 border-slate-700 rounded text-indigo-600 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-0"
+                            class="w-4 h-4 bg-white border-slate-200 rounded text-indigo-600 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-0"
                         >
-                        <label for="remember" class="ml-2 text-sm text-slate-300">
+                        <label for="remember" class="ml-2 text-sm text-slate-600 font-medium">
                             Remember me
                         </label>
                     </div>
-                    <a href="#" class="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
+                    <a href="#" class="text-sm text-indigo-600 hover:text-indigo-600 transition-colors">
                         Forgot password?
                     </a>
                 </div>
@@ -121,18 +121,18 @@
             <!-- Divider -->
             <div class="relative my-6">
                 <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-slate-800"></div>
+                    <div class="w-full border-t border-slate-200"></div>
                 </div>
                 <div class="relative flex justify-center text-sm">
-                    <span class="px-4 bg-slate-900 text-slate-500">New to DataFusion AI?</span>
+                    <span class="px-4 bg-white text-slate-600">New to DataFusion AI?</span>
                 </div>
             </div>
 
             <!-- Register Link -->
             <div class="text-center">
-                <p class="text-sm text-slate-400">
+                <p class="text-sm text-slate-600">
                     Don't have an account? 
-                    <a href="{{ route('register') }}" class="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors ml-1">
+                    <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-600 font-semibold transition-colors ml-1">
                         Create one now →
                     </a>
                 </p>
@@ -141,7 +141,7 @@
 
         <!-- Security Badge -->
         <div class="mt-6 text-center">
-            <div class="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full text-xs text-slate-400 border border-slate-800/50">
+            <div class="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full text-xs text-slate-600 border border-slate-200">
                 <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                 </svg>

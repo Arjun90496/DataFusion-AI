@@ -57,7 +57,7 @@ class DataFusionService
             $fusedPayload['markets'] ?? null,
         ]));
         
-        $primaryLocation = $fusedPayload['environment']['data']['location']['name'] ?? null;
+        $primaryLocation = $fusedPayload['fusion_metadata']['primary_location'] ?? null;
         
         // Calculate payload size for storage tracking
         $payloadJson = json_encode($fusedPayload);
@@ -158,6 +158,7 @@ class DataFusionService
                 'total_sources' => 0,
                 'successful_sources' => 0,
                 'failed_sources' => [],
+                'primary_location' => null,
             ],
         ];
         
@@ -177,6 +178,11 @@ class DataFusionService
                         'cached' => $result['cached'],
                         'fetched_at' => now()->toIso8601String(),
                     ];
+                    
+                    // Update primary location from weather if available
+                    if (isset($result['data']['location']['name'])) {
+                        $fused['fusion_metadata']['primary_location'] = $result['data']['location']['name'];
+                    }
                 } elseif (in_array($slug, ['newsapi', 'news'])) {
                     $fused['briefing'] = [
                         'source' => $result['provider'],

@@ -120,6 +120,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/fusion/generate', [DataFusionController::class, 'generate'])->name('fusion.generate');
     });
     Route::get('/fusion', [DataFusionController::class, 'show'])->name('fusion.show');
+    Route::get('/fusion/export/{format}', [DataFusionController::class, 'export'])->name('fusion.export');
     
     // AI Insights Routes (Relaxed for development: 100 per hour)
     Route::get('/insights', [AiInsightController::class, 'index'])->name('insights.index');
@@ -133,6 +134,10 @@ Route::middleware('auth')->group(function () {
     // Settings Routes
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    
+    // AI Search Routes
+    Route::get('/ai-search', [\App\Http\Controllers\AiSearchController::class, 'index'])->name('ai-search.index');
+    Route::post('/ai-search', [\App\Http\Controllers\AiSearchController::class, 'search'])->name('ai-search.search');
 });
 
 /*

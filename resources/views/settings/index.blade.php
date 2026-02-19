@@ -4,7 +4,10 @@
 
 @section('content')
 <div class="min-h-screen bg-slate-50/50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Sidebar -->
+    @include('layouts.partials.sidebar')
+
+    <div class="ml-64 p-8">
         <!-- Header -->
         <div class="mb-12 text-center">
             <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Account Configuration</h1>
@@ -24,7 +27,7 @@
                     </div>
                     <div>
                         <h2 class="text-2xl font-black text-slate-900 tracking-tight">Identity & Profile</h2>
-                        <p class="text-sm font-medium text-slate-400">Essential account information and public visibility.</p>
+                        <p class="text-sm font-medium text-slate-600">Essential account information and public visibility.</p>
                     </div>
                 </div>
 
@@ -34,7 +37,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                         <div>
-                            <label for="name" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Display Name</label>
+                            <label for="name" class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 px-1">Display Name</label>
                             <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" 
                                 class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-bold placeholder-slate-300 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:bg-white transition-all shadow-sm"
                                 required>
@@ -42,7 +45,7 @@
                         </div>
 
                         <div>
-                            <label for="email" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Email Address</label>
+                            <label for="email" class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 px-1">Email Address</label>
                             <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" 
                                 class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-bold placeholder-slate-300 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:bg-white transition-all shadow-sm"
                                 required>
@@ -59,13 +62,13 @@
                             </div>
                             <div>
                                 <h3 class="text-2xl font-black text-slate-900 tracking-tight">Security Credentials</h3>
-                                <p class="text-sm font-medium text-slate-400">Reset your access password and protect your vault.</p>
+                                <p class="text-sm font-medium text-slate-600">Reset your access password and protect your vault.</p>
                             </div>
                         </div>
 
                         <div class="space-y-6">
                             <div>
-                                <label for="current_password" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Current Password</label>
+                                <label for="current_password" class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 px-1">Current Password</label>
                                 <input type="password" name="current_password" id="current_password" 
                                     class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
                                 @error('current_password') <p class="text-red-500 text-xs font-bold mt-2 px-1">{{ $message }}</p> @enderror
@@ -73,13 +76,13 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div>
-                                    <label for="new_password" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">New Secure Password</label>
+                                    <label for="new_password" class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 px-1">New Secure Password</label>
                                     <input type="password" name="new_password" id="new_password" 
                                         class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
                                     @error('new_password') <p class="text-red-500 text-xs font-bold mt-2 px-1">{{ $message }}</p> @enderror
                                 </div>
                                 <div>
-                                    <label for="new_password_confirmation" class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Confirm Security Key</label>
+                                    <label for="new_password_confirmation" class="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2 px-1">Confirm Security Key</label>
                                     <input type="password" name="new_password_confirmation" id="new_password_confirmation" 
                                         class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl px-5 py-4 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 focus:bg-white transition-all shadow-sm">
                                 </div>
@@ -101,7 +104,7 @@
             <!-- Dangerous Area -->
             <div class="bg-red-50/50 p-10 rounded-[2.5rem] border border-red-100 group">
                 <div class="flex items-center space-x-4 mb-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 border border-red-200 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                    <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 border border-red-200 group-hover:bg-red-600 group-hover:text-slate-900 transition-all duration-300">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                         </svg>
@@ -112,11 +115,91 @@
                     </div>
                 </div>
                 <p class="text-slate-500 font-medium mb-8 leading-relaxed">Once you initiate deletion, all your fused data, encrypted API keys, and strategic insights will be purged from our secure infrastructure within 24 hours. There is no backup facility for this action.</p>
-                <button class="px-8 py-4 bg-white border border-red-200 text-red-600 rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-600 transition-all font-bold shadow-sm active:scale-95">
+                <button class="px-8 py-4 bg-white border border-red-200 text-red-600 rounded-2xl hover:bg-red-600 hover:text-slate-900 hover:border-red-600 transition-all font-bold shadow-sm active:scale-95">
                     Execute Account Deletion
                 </button>
             </div>
         </div>
+    </div>
+</div>
+@extends('layouts.layout')
+
+@section('title', 'Settings')
+
+@section('content')
+<div class="gradient-bg min-h-screen">
+    <div class="flex">
+        @include('layouts.partials.sidebar')
+        
+        <main class="flex-1 ml-64 bg-slate-50/50 min-h-screen">
+            <!-- Header -->
+            <nav class="glass border-b border-slate-200 sticky top-0 z-30">
+                <div class="px-8 py-4">
+                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Settings</h1>
+                    <p class="text-sm font-medium text-slate-500">Manage your account and preferences</p>
+                </div>
+            </nav>
+
+            <div class="p-8 space-y-8 max-w-4xl">
+                <!-- Account Settings -->
+                <div class="glass p-8 rounded-2xl border border-slate-200 bg-white">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Account Settings</h2>
+                    <form action="{{ route('settings.update') }}" method="POST" class="space-y-6">
+                        @csrf
+                        @method('PUT')
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
+                            <input type="text" name="name" value="{{ Auth::user()->name }}" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                            <input type="email" name="email" value="{{ Auth::user()->email }}" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        </div>
+
+                        <button type="submit" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition-all active:scale-95">
+                            Save Changes
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Notification Preferences -->
+                <div class="glass p-8 rounded-2xl border border-slate-200 bg-white">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Notification Preferences</h2>
+                    <div class="space-y-4">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 rounded border-slate-300" checked>
+                            <span class="text-slate-700 font-medium">Email notifications for new insights</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 rounded border-slate-300" checked>
+                            <span class="text-slate-700 font-medium">Daily digest of API activity</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="w-5 h-5 rounded border-slate-300">
+                            <span class="text-slate-700 font-medium">Alert on API errors</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Data & Privacy -->
+                <div class="glass p-8 rounded-2xl border border-slate-200 bg-white">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Data & Privacy</h2>
+                    <div class="space-y-6">
+                        <div class="p-4 bg-blue-50 border border-blue-100 rounded-lg">
+                            <p class="text-sm text-blue-900 font-medium">📦 Your data is encrypted with AES-256-GCM and stored securely.</p>
+                        </div>
+                        <button class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold transition-all active:scale-95">
+                            Download My Data
+                        </button>
+                        <button class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold transition-all active:scale-95">
+                            Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
 @endsection

@@ -7,98 +7,7 @@
     <div class="flex">
         
         <!-- Sidebar Navigation -->
-        <aside class="fixed left-0 top-0 h-screen w-64 glass border-r border-slate-200 z-40">
-            <div class="flex flex-col h-full text-slate-700">
-                <!-- Logo -->
-                <div class="p-6 border-b border-slate-100">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <span class="text-lg font-bold gradient-text">DataFusion AI</span>
-                    </div>
-                </div>
-
-                <!-- User Profile -->
-                <div class="p-6 border-b border-slate-100">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold shadow-md">
-                            {{ strtoupper(substr($user->name, 0, 1)) }}
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-bold text-slate-900 truncate">{{ $user->name }}</p>
-                            <p class="text-xs text-slate-500 truncate">{{ $user->email }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation Links -->
-                <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-                    <!-- Dashboard -->
-                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-700 transition-colors shadow-sm">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                        </svg>
-                        <span class="font-semibold">Dashboard</span>
-                    </a>
-
-                    <!-- API Keys -->
-                    <a href="{{ route('api-keys.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                        </svg>
-                        <span class="font-medium">API Keys</span>
-                    </a>
-
-                    <!-- Data Fusion -->
-                    <a href="{{ route('fusion.show') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
-                        </svg>
-                        <span class="font-medium">Data Fusion</span>
-                        <span class="ml-auto text-xs bg-indigo-100 text-indigo-700 font-bold px-2 py-1 rounded-full">Phase 6</span>
-                    </a>
-
-                    <!-- AI Insights -->
-                    <a href="{{ route('insights.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
-                        <span class="font-medium">AI Insights</span>
-                        <span class="ml-auto text-xs bg-purple-100 text-purple-700 font-bold px-2 py-1 rounded-full">Phase 7</span>
-                    </a>
-
-                    <!-- Divider -->
-                    <div class="pt-4 pb-2">
-                        <div class="border-t border-slate-100"></div>
-                    </div>
-
-                    <!-- Settings -->
-                    <a href="{{ route('settings.index') }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 transition-colors group">
-                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <span class="font-medium">Settings</span>
-                    </a>
-                </nav>
-
-                <!-- Logout Button -->
-                <div class="p-4 border-t border-slate-100">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-500 hover:text-red-600 hover:bg-red-50 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                            </svg>
-                            <span class="font-semibold">Logout</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </aside>
+        @include('layouts.partials.sidebar')
 
         <!-- Main Content Area -->
         <main class="flex-1 ml-64 bg-slate-50/50 min-h-screen">
@@ -113,14 +22,14 @@
                     <div class="flex items-center space-x-4">
                         <!-- Search Bar -->
                         <div class="relative">
-                            <input type="text" placeholder="Search..." class="w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 text-slate-900 rounded-xl text-sm placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition shadow-sm">
-                            <svg class="w-5 h-5 text-slate-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <input type="text" placeholder="Search..." class="w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 text-slate-900 rounded-xl text-sm placeholder:text-slate-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition shadow-sm">
+                            <svg class="w-5 h-5 text-slate-600 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </div>
 
                         <!-- Notifications -->
-                        <button class="relative p-2 text-slate-400 hover:text-indigo-600 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm bg-white border border-slate-200">
+                        <button class="relative p-2 text-slate-600 hover:text-indigo-600 rounded-xl hover:bg-indigo-50 transition-colors shadow-sm bg-white border border-slate-200">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                             </svg>
@@ -133,6 +42,121 @@
             <!-- Dashboard Content -->
             <div class="p-8 space-y-8">
                 
+                <!-- AI Deep Search Section -->
+                <div class="glass p-8 rounded-2xl border border-slate-200 bg-gradient-to-br from-indigo-50/50 via-white to-purple-50/50 shadow-lg border-indigo-200/50">
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">🤖 Deep Data Search</h2>
+                            <span class="text-xs bg-indigo-100 text-indigo-700 font-bold px-3 py-1 rounded-full animate-pulse">AI Powered</span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500">Ask me anything. I'll search across all your connected APIs and provide comprehensive results.</p>
+                    </div>
+
+                    @if($stats['api_count'] > 0)
+                        <div class="space-y-4">
+                            <!-- Search Input -->
+                            <div class="relative group">
+                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
+                                <div class="relative flex items-center space-x-3 bg-white rounded-xl border-2 border-slate-200 focus-within:border-indigo-500 focus-within:shadow-lg transition-all p-4">
+                                    <svg class="w-6 h-6 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                    <input 
+                                        type="text" 
+                                        id="aiSearchQuery" 
+                                        placeholder="What data are you looking for? (e.g., 'weather in London', 'latest tech news', 'Bitcoin price')"
+                                        class="flex-1 bg-transparent text-slate-900 placeholder:text-slate-600 focus:outline-none text-lg"
+                                    >
+                                    <button 
+                                        id="aiSearchBtn"
+                                        class="px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95 flex items-center space-x-2 whitespace-nowrap"
+                                    >
+                                        <svg class="w-5 h-5 spinner hidden animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                        </svg>
+                                        <span class="search-text">Search</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- API Status Indicators -->
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-bold text-slate-600">Connected APIs:</span>
+                                @foreach($connectedApis as $api)
+                                    <div class="inline-flex items-center space-x-1 px-3 py-1 rounded-full border bg-indigo-50 border-indigo-200">
+                                        <div class="w-2 h-2 rounded-full {{ $api['status'] == 'offline' ? '' : 'animate-pulse' }} bg-indigo-500"></div>
+                                        <span class="text-xs font-bold text-indigo-600">{{ $api['name'] }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Loading State -->
+                        <div id="aiSearchLoading" class="hidden mt-6">
+                            <div class="flex items-center justify-center space-x-3">
+                                <div class="w-3 h-3 bg-indigo-600 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+                                <div class="w-3 h-3 bg-indigo-600 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                                <div class="w-3 h-3 bg-indigo-600 rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
+                                <span class="text-sm font-bold text-slate-600 ml-2">Searching across APIs...</span>
+                            </div>
+                        </div>
+
+                        <!-- Search Results -->
+                        <div id="aiSearchResults" class="hidden mt-6 space-y-4">
+                            <!-- AI Response Section -->
+                            <div id="aiResponseSection" class="bg-white border-2 border-indigo-200 rounded-xl p-6 shadow-md">
+                                <div class="flex items-center space-x-2 mb-4">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                    <h3 class="font-bold text-slate-900">AI Analysis</h3>
+                                </div>
+                                <div id="aiResponseText" class="text-slate-700 text-sm leading-relaxed whitespace-pre-wrap"></div>
+                            </div>
+
+                            <!-- Data Sources Section -->
+                            <div id="dataSourcesSection" class="hidden">
+                                <h3 class="font-bold text-slate-900 mb-3 flex items-center space-x-2">
+                                    <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                    </svg>
+                                    <span>Data from Connected APIs</span>
+                                </h3>
+                                <div id="dataSourcesList" class="grid grid-cols-1 lg:grid-cols-2 gap-3"></div>
+                            </div>
+
+                            <!-- Error Section -->
+                            <div id="errorSection" class="hidden bg-red-50 border border-red-200 rounded-xl p-4">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span id="errorText" class="text-sm font-medium text-red-700"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- No Search Yet -->
+                        <div id="noSearch" class="mt-6 text-center py-6 text-slate-500">
+                            <svg class="w-12 h-12 mx-auto text-slate-700 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1m2-1v2.5M6 7l-2 1m2-1l-2-1m2 1v2.5"></path>
+                            </svg>
+                            <p class="font-medium">Enter a query to search across your connected APIs</p>
+                        </div>
+                    @else
+                        <div class="text-center py-12">
+                            <svg class="w-16 h-16 mx-auto text-slate-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                            </svg>
+                            <h3 class="text-xl font-bold text-slate-600 mb-2">Add API Keys First</h3>
+                            <p class="text-slate-500 mb-4">To use Deep Data Search, please add at least one API key</p>
+                            <a href="{{ route('api-keys.index') }}" class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition-all hover:scale-105">
+                                Add API Keys
+                            </a>
+                        </div>
+                    @endif
+                </div>
+
                 <!-- Stats Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- API Keys Card -->
@@ -146,7 +170,7 @@
                             <span class="text-3xl font-extrabold text-slate-900">{{ $stats['api_count'] }}</span>
                         </div>
                         <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Connected APIs</h3>
-                        <p class="text-xs text-slate-400">Active integrations</p>
+                        <p class="text-xs text-slate-600">Active integrations</p>
                     </div>
 
                     <!-- Data Fetches Card -->
@@ -160,7 +184,7 @@
                             <span class="text-3xl font-extrabold text-slate-900">{{ $stats['total_fetches'] }}</span>
                         </div>
                         <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Fetches</h3>
-                        <p class="text-xs text-slate-400">Requests processed</p>
+                        <p class="text-xs text-slate-600">Requests processed</p>
                     </div>
 
                     <!-- AI Insights Card -->
@@ -174,7 +198,7 @@
                             <span class="text-3xl font-extrabold text-slate-900">{{ $stats['insights_count'] }}</span>
                         </div>
                         <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">AI Insights</h3>
-                        <p class="text-xs text-slate-400">Generated insights</p>
+                        <p class="text-xs text-slate-600">Generated insights</p>
                     </div>
 
                     <!-- Storage Used Card -->
@@ -185,10 +209,10 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
                                 </svg>
                             </div>
-                            <span class="text-3xl font-extrabold text-slate-900">{{ $stats['storage_used'] }}<span class="text-base text-slate-400 font-medium ml-1">MB</span></span>
+                            <span class="text-3xl font-extrabold text-slate-900">{{ $stats['storage_used'] }}<span class="text-base text-slate-600 font-medium ml-1">MB</span></span>
                         </div>
                         <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Storage Used</h3>
-                        <p class="text-xs text-slate-400">Of 1GB available</p>
+                        <p class="text-xs text-slate-600">Of 1GB available</p>
                     </div>
                 </div>
 
@@ -210,25 +234,25 @@
                     @if(count($connectedApis) > 0)
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @foreach($connectedApis as $api)
-                                <div class="glass p-6 rounded-xl border border-slate-200 hover:border-{{ $api['color'] }}-500/50 transition-all duration-300 group bg-white shadow-sm hover:shadow-md">
+                                <div class="glass p-6 rounded-xl border border-slate-200 transition-all duration-300 group bg-white shadow-sm hover:shadow-md">
                                     <div class="flex items-start justify-between mb-4">
                                         <div class="flex items-start space-x-4">
                                             <!-- API Icon -->
-                                            <div class="p-3 bg-{{ $api['color'] }}-50 rounded-lg group-hover:bg-{{ $api['color'] }}-100 transition-colors">
+                                            <div class="p-3 bg-indigo-50 rounded-lg group-hover:bg-indigo-100 transition-colors">
                                                 @if($api['icon'] == 'cloud')
-                                                    <svg class="w-6 h-6 text-{{ $api['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
                                                     </svg>
                                                 @elseif($api['icon'] == 'newspaper')
-                                                    <svg class="w-6 h-6 text-{{ $api['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
                                                     </svg>
                                                 @elseif($api['icon'] == 'sparkles')
-                                                    <svg class="w-6 h-6 text-{{ $api['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                                                     </svg>
                                                 @elseif($api['icon'] == 'code')
-                                                    <svg class="w-6 h-6 text-{{ $api['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                                     </svg>
                                                 @endif
@@ -237,7 +261,7 @@
                                             <div class="flex-1">
                                                 <h3 class="font-bold text-slate-900 mb-1">{{ $api['name'] }}</h3>
                                                 <p class="text-sm font-medium text-slate-500 mb-2 leading-relaxed">{{ $api['description'] }}</p>
-                                                <p class="text-xs font-bold text-slate-400">Last sync: {{ $api['last_sync'] }}</p>
+                                                <p class="text-xs font-bold text-slate-600">Last sync: {{ $api['last_sync'] }}</p>
                                             </div>
                                         </div>
                                         
@@ -266,11 +290,11 @@
                                     <div class="flex items-center justify-between mb-4 pt-4 border-t border-slate-100">
                                         <div class="text-center">
                                             <p class="text-2xl font-extrabold text-slate-900">{{ $api['fetch_count'] }}</p>
-                                            <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Fetches</p>
+                                            <p class="text-xs font-bold text-slate-600 uppercase tracking-tighter">Fetches</p>
                                         </div>
                                         <div class="text-center">
                                             <p class="text-2xl font-extrabold text-slate-900">{{ number_format($api['error_rate'] * 100, 1) }}%</p>
-                                            <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Error Rate</p>
+                                            <p class="text-xs font-bold text-slate-600 uppercase tracking-tighter">Error Rate</p>
                                         </div>
                                     </div>
 
@@ -278,7 +302,7 @@
                                     <div class="flex space-x-2">
                                         <button 
                                             onclick="fetchData({{ $api['id'] }}, this)"
-                                            class="flex-1 px-4 py-2 bg-{{ $api['color'] }}-600 hover:bg-{{ $api['color'] }}-700 text-white rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 shadow-sm"
+                                            class="flex-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 shadow-sm"
                                             @if($api['status'] == 'offline') disabled @endif
                                         >
                                             <svg class="w-4 h-4 spinner hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -286,7 +310,7 @@
                                             </svg>
                                             <span class="button-text">Fetch Data</span>
                                         </button>
-                                        <button class="px-4 py-2 glass border border-slate-200 hover:border-{{ $api['color'] }}-500/50 text-slate-500 hover:text-{{ $api['color'] }}-600 rounded-xl font-bold transition-all duration-300 bg-white">
+                                        <button class="px-4 py-2 glass border border-slate-200 hover:border-indigo-500/50 text-slate-500 hover:text-indigo-600 rounded-xl font-bold transition-all duration-300 bg-white">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -301,7 +325,7 @@
                             <svg class="w-16 h-16 mx-auto text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
                             </svg>
-                            <h3 class="text-xl font-bold text-slate-300 mb-2">No APIs Connected</h3>
+                            <h3 class="text-xl font-bold text-slate-700 mb-2">No APIs Connected</h3>
                             <p class="text-slate-500 mb-4">Add your first API to start fetching data</p>
                         </div>
                     @endif
@@ -360,7 +384,7 @@
                                                 </div>
                                                 <p class="text-sm font-medium text-slate-500 mb-3 leading-relaxed">{{ $insight['description'] }}</p>
                                                 <div class="flex items-center justify-between">
-                                                    <span class="text-xs font-bold text-slate-400">{{ $insight['created_at'] }}</span>
+                                                    <span class="text-xs font-bold text-slate-600">{{ $insight['created_at'] }}</span>
                                                     <button class="text-xs font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
                                                         {{ $insight['action'] }} →
                                                     </button>
@@ -391,8 +415,8 @@
                             <div class="space-y-4">
                                 @foreach($recentActivity as $activity)
                                     <div class="flex items-start space-x-4 p-3 bg-white/50 rounded-xl hover:bg-white transition-colors">
-                                        <div class="p-2 bg-{{ $activity['color'] }}-50 rounded-lg flex-shrink-0">
-                                            <svg class="w-5 h-5 text-{{ $activity['color'] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <div class="p-2 bg-indigo-50 rounded-lg flex-shrink-0">
+                                            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 @if($activity['icon'] == 'download')
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                                                 @elseif($activity['icon'] == 'lightbulb')
@@ -406,7 +430,7 @@
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-sm font-bold text-slate-700">{{ $activity['description'] }}</p>
-                                            <p class="text-xs font-bold text-slate-400 mt-1 uppercase tracking-tighter">{{ $activity['timestamp'] }}</p>
+                                            <p class="text-xs font-bold text-slate-600 mt-1 uppercase tracking-tighter">{{ $activity['timestamp'] }}</p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -467,7 +491,7 @@
                                         <span class="font-extrabold uppercase tracking-widest text-xs">Latest Briefing</span>
                                     </div>
                                     <p class="text-sm font-bold text-slate-800 line-clamp-2 mb-2 leading-tight">{{ $latestFusion->news['data']['articles'][0]['title'] ?? 'No news updates' }}</p>
-                                    <p class="text-xs font-bold text-slate-400 tracking-tight">{{ $latestFusion->news['data']['articles'][0]['source']['name'] ?? 'Unknown' }}</p>
+                                    <p class="text-xs font-bold text-slate-600 tracking-tight">{{ $latestFusion->news['data']['articles'][0]['source']['name'] ?? 'Unknown' }}</p>
                                 </div>
                             @endif
                         </div>
@@ -476,7 +500,7 @@
                     <!-- Data Visualization Placeholder (when no data exists) -->
                     <div class="glass p-12 rounded-2xl border-2 border-dashed border-slate-200 text-center bg-white/50 shadow-sm">
                         <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-10 h-10 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                             </svg>
                         </div>
@@ -500,6 +524,147 @@
 
 <!-- Fetch Data JavaScript -->
 <script>
+    /**
+     * AI Deep Search Functionality
+     * Searches across all connected APIs and provides AI-generated responses
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('aiSearchQuery');
+        const searchBtn = document.getElementById('aiSearchBtn');
+        const loadingDiv = document.getElementById('aiSearchLoading');
+        const resultsDiv = document.getElementById('aiSearchResults');
+        const noSearchDiv = document.getElementById('noSearch');
+        const errorSection = document.getElementById('errorSection');
+        const errorText = document.getElementById('errorText');
+        const aiResponseSection = document.getElementById('aiResponseSection');
+        const aiResponseText = document.getElementById('aiResponseText');
+        const dataSourcesSection = document.getElementById('dataSourcesSection');
+        const dataSourcesList = document.getElementById('dataSourcesList');
+
+        async function performSearch() {
+            const query = searchInput.value.trim();
+            if (!query) {
+                alert('Please enter a search query');
+                return;
+            }
+
+            // Reset UI
+            errorSection.classList.add('hidden');
+            dataSourcesSection.classList.add('hidden');
+            
+            // Show loading
+            noSearchDiv.classList.add('hidden');
+            loadingDiv.classList.remove('hidden');
+            resultsDiv.classList.add('hidden');
+            searchBtn.disabled = true;
+
+            const spinner = searchBtn.querySelector('.spinner');
+            const searchText = searchBtn.querySelector('.search-text');
+            spinner.classList.remove('hidden');
+            searchText.textContent = 'Searching...';
+
+            try {
+                const response = await fetch('{{ route("ai-search.search") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({ query: query })
+                });
+
+                const data = await response.json();
+                loadingDiv.classList.add('hidden');
+
+                if (data.success) {
+                    // Display AI Response
+                    aiResponseText.textContent = data.response;
+                    
+                    // Display data sources
+                    if (data.data && Object.keys(data.data).length > 0) {
+                        dataSourcesList.innerHTML = '';
+                        let hasData = false;
+
+                        for (const [source, sourceData] of Object.entries(data.data)) {
+                            if (sourceData && sourceData.success) {
+                                hasData = true;
+                                const sourceCard = createSourceCard(source, sourceData);
+                                dataSourcesList.appendChild(sourceCard);
+                            }
+                        }
+
+                        if (hasData) {
+                            dataSourcesSection.classList.remove('hidden');
+                        }
+                    }
+
+                    resultsDiv.classList.remove('hidden');
+                } else {
+                    errorText.textContent = data.message || 'An error occurred during the search';
+                    errorSection.classList.remove('hidden');
+                    resultsDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                errorText.textContent = 'Network error. Please try again.';
+                errorSection.classList.remove('hidden');
+                resultsDiv.classList.remove('hidden');
+                loadingDiv.classList.add('hidden');
+            } finally {
+                searchBtn.disabled = false;
+                spinner.classList.add('hidden');
+                searchText.textContent = 'Search';
+            }
+        }
+
+        function createSourceCard(source, data) {
+            const card = document.createElement('div');
+            card.className = 'bg-slate-50 border border-slate-200 rounded-lg p-4 hover:border-indigo-300 hover:shadow-md transition-all';
+
+            let sourceTitle = source;
+            let sourceIcon = '📊';
+            let sourceColor = 'slate';
+
+            if (source.includes('weather')) {
+                sourceTitle = 'Weather';
+                sourceIcon = '🌤️';
+                sourceColor = 'blue';
+            } else if (source.includes('news')) {
+                sourceTitle = 'News';
+                sourceIcon = '📰';
+                sourceColor = 'orange';
+            } else if (source.includes('crypto')) {
+                sourceTitle = 'Crypto Market';
+                sourceIcon = '💰';
+                sourceColor = 'emerald';
+            }
+
+            const content = data.data ? JSON.stringify(data.data) : JSON.stringify(data);
+            const preview = content.substring(0, 200) + (content.length > 200 ? '...' : '');
+
+            card.innerHTML = `
+                <div class="mb-3">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-2xl">${sourceIcon}</span>
+                        <span class="font-bold text-slate-900 capitalize">${sourceTitle}</span>
+                        <span class="text-xs font-bold text-${sourceColor}-600 bg-${sourceColor}-50 px-2 py-1 rounded">Active</span>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-600 bg-white p-3 rounded border border-slate-100 max-h-32 overflow-y-auto font-mono">
+                    <pre class="whitespace-pre-wrap">${content}</pre>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Event listeners
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') performSearch();
+        });
+    });
+
     /**
      * Simulate data fetching with loading states
      * In Phase 5, this will make actual API calls to backend

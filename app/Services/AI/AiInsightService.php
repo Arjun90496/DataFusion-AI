@@ -236,44 +236,88 @@ class AiInsightService
             'sentiment' => 'neutral',
         ];
 
-        // Basic weather analysis
-        if (isset($payload['environment']['data'])) {
+        $hasWeather = isset($payload['environment']['data']);
+        $hasNews = isset($payload['briefing']['data']['articles']);
+        $hasCrypto = isset($payload['markets']['data']['data']);
+
+        // 1. Basic Weather Analysis
+        if ($hasWeather) {
             $weather = $payload['environment']['data'];
             $temp = $weather['current']['temperature'] ?? 20;
+            $location = $weather['location']['name'] ?? 'Global';
             
             if ($temp > 30) {
-                $insights['trends'][] = "High temperature warning detected.";
-                $insights['recommendations'][] = "Monitor cooling systems during heat period.";
-                $insights['sentiment'] = 'negative';
-            } elseif ($temp < 5) {
-                $insights['trends'][] = "Cold weather front approaching.";
+                $insights['trends'][] = "Elevated temperature warning in {$location} ({$temp}°C).";
+                $insights['recommendations'][] = "Monitor hardware temperature in designated zones.";
                 $insights['sentiment'] = 'neutral';
+            } elseif ($temp < 5) {
+                $insights['trends'][] = "Cold weather front approaching {$location}.";
             }
         }
 
-        // Basic news analysis
-        if (isset($payload['briefing']['data']['articles'])) {
-            $count = count($payload['briefing']['data']['articles']);
-            $insights['trends'][] = "High volume of news activity ({$count} sources).";
-        }
-
-        // Basic crypto analysis
-        if (isset($payload['markets']['data']['data'])) {
+        // 2. Market Sentiment Analysis
+        if ($hasCrypto) {
             $cryptos = $payload['markets']['data']['data'];
+            $positiveMoves = 0;
+            $negativeMoves = 0;
+
             foreach ($cryptos as $crypto) {
                 $change = $crypto['change_24h'] ?? 0;
-                if ($change > 5) {
-                    $insights['trends'][] = strtoupper($crypto['id']) . " is showing strong bullish momentum (+$change%).";
-                    $insights['sentiment'] = 'positive';
-                } elseif ($change < -5) {
-                    $insights['trends'][] = strtoupper($crypto['id']) . " is experiencing a significant correction ($change%).";
-                    $insights['sentiment'] = 'negative';
+                $symbol = strtoupper($crypto['id']);
+                
+                if ($change > 3) {
+                    $insights['trends'][] = "{$symbol} showing bullish momentum (+{$change}%).";
+                    $positiveMoves++;
+                } elseif ($change < -3) {
+                    $insights['trends'][] = "{$symbol} correction detected ({$change}%).";
+                    $negativeMoves++;
+                }
+            }
+
+            if ($positiveMoves > $negativeMoves) {
+                $insights['sentiment'] = 'positive';
+                $insights['recommendations'][] = "Consider profit-taking on high-performing assets.";
+            } elseif ($negativeMoves > $positiveMoves) {
+                $insights['sentiment'] = 'negative';
+                $insights['recommendations'][] = "Maintain long-term strategy during market volatility.";
+            }
+        }
+
+        // 3. News Context
+        if ($hasNews) {
+            $articles = $payload['briefing']['data']['articles'];
+            $count = count($articles);
+            $insights['trends'][] = "Active information flow with {$count} recent briefing items.";
+            
+            // Heuristic news checking for specific keywords
+            $keywords = ['surge', 'crash', 'breakthrough', 'conflict', 'recovery'];
+            foreach ($articles as $article) {
+                $title = strtolower($article['title'] ?? '');
+                foreach ($keywords as $word) {
+                    if (str_contains($title, $word)) {
+                        $insights['trends'][] = "Critical keyword '{$word}' identified in recent briefing.";
+                    }
                 }
             }
         }
 
+        // 4. CROSS-SOURCE CORRELATION (Phases 6 & 7 Logic)
+        if ($hasWeather && $hasCrypto) {
+            $weather = $payload['environment']['data'];
+            $isExtreme = ($weather['current']['temperature'] ?? 20) > 35 || ($weather['current']['temperature'] ?? 20) < 0;
+            
+            if ($isExtreme && isset($insights['sentiment']) && $insights['sentiment'] === 'negative') {
+                $insights['summary'] = "Combined warning: Environmental stress in {$location} correlates with bearish market indicators.";
+                $insights['recommendations'][] = "Hedge risks as multiple sectors show defensive patterns.";
+            }
+        }
+
         if (empty($insights['trends'])) {
-            $insights['trends'][] = "Stable conditions observed across all data points.";
+            $insights['trends'][] = "Stable baseline conditions observed across all data points.";
+        }
+
+        if (empty($insights['recommendations'])) {
+            $insights['recommendations'][] = "Continue monitoring real-time feeds for variance.";
         }
 
         return $insights;

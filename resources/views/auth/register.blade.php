@@ -16,19 +16,19 @@
                     <span class="text-2xl font-bold gradient-text">DataFusion AI</span>
                 </div>
             </a>
-            <p class="text-slate-400">Create your account to get started</p>
+            <p class="text-slate-600">Create your account to get started</p>
         </div>
 
         <!-- Registration Card -->
-        <div class="glass p-8 rounded-2xl border border-slate-800 shadow-2xl shadow-indigo-500/10">
-            <h2 class="text-2xl font-bold text-slate-100 text-center mb-6">Get Started Free</h2>
+        <div class="glass p-8 rounded-2xl border border-slate-200 shadow-xl shadow-indigo-500/5">
+            <h2 class="text-2xl font-bold text-slate-900 text-center mb-6">Get Started Free</h2>
 
             <form action="{{ route('register') }}" method="POST" class="space-y-5">
                 @csrf
 
                 <!-- Name Field -->
                 <div>
-                    <label for="name" class="block text-sm font-medium text-slate-300 mb-2">
+                    <label for="name" class="block text-sm font-medium text-slate-700 mb-2">
                         Full Name
                     </label>
                     <div class="relative">
@@ -44,7 +44,7 @@
                             value="{{ old('name') }}"
                             required
                             autofocus
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('name') border-red-500 ring-2 ring-red-500/50 @enderror"
+                            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 text-slate-900 rounded-lg placeholder:text-slate-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('name') border-red-500 ring-2 ring-red-500/50 @enderror"
                             placeholder="John Doe"
                         >
                     </div>
@@ -60,7 +60,7 @@
 
                 <!-- Email Field -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">
+                    <label for="email" class="block text-sm font-medium text-slate-700 mb-2">
                         Email Address
                     </label>
                     <div class="relative">
@@ -75,7 +75,7 @@
                             name="email" 
                             value="{{ old('email') }}"
                             required
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('email') border-red-500 ring-2 ring-red-500/50 @enderror"
+                            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 text-slate-900 rounded-lg placeholder:text-slate-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('email') border-red-500 ring-2 ring-red-500/50 @enderror"
                             placeholder="john@example.com"
                         >
                     </div>
@@ -91,7 +91,7 @@
 
                 <!-- Password Field -->
                 <div>
-                    <label for="password" class="block text-sm font-medium text-slate-300 mb-2">
+                    <label for="password" class="block text-sm font-medium text-slate-700 mb-2">
                         Password
                     </label>
                     <div class="relative">
@@ -105,7 +105,7 @@
                             id="password" 
                             name="password" 
                             required
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('password') border-red-500 ring-2 ring-red-500/50 @enderror"
+                            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 text-slate-900 rounded-lg placeholder:text-slate-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 @error('password') border-red-500 ring-2 ring-red-500/50 @enderror"
                             placeholder="Minimum 8 characters"
                         >
                     </div>
@@ -128,7 +128,7 @@
 
                 <!-- Password Confirmation Field -->
                 <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-slate-300 mb-2">
+                    <label for="password_confirmation" class="block text-sm font-medium text-slate-700 mb-2">
                         Confirm Password
                     </label>
                     <div class="relative">
@@ -142,7 +142,7 @@
                             id="password_confirmation" 
                             name="password_confirmation" 
                             required
-                            class="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-700 text-slate-100 rounded-lg placeholder:text-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200"
+                            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 text-slate-900 rounded-lg placeholder:text-slate-600 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200"
                             placeholder="Re-enter your password"
                         >
                     </div>
@@ -162,25 +162,25 @@
                 <!-- Terms -->
                 <p class="text-xs text-center text-slate-500">
                     By creating an account, you agree to our 
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Terms of Service</a> and 
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Privacy Policy</a>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-600">Terms of Service</a> and 
+                    <a href="#" class="text-indigo-600 hover:text-indigo-600">Privacy Policy</a>
                 </p>
             </form>
 
             <!-- Divider -->
             <div class="relative my-6">
                 <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-slate-800"></div>
+                    <div class="w-full border-t border-slate-200"></div>
                 </div>
                 <div class="relative flex justify-center text-sm">
-                    <span class="px-4 bg-slate-900 text-slate-500">Already have an account?</span>
+                    <span class="px-4 bg-white text-slate-600">Already have an account?</span>
                 </div>
             </div>
 
             <!-- Login Link -->
             <div class="text-center">
-                <p class="text-sm text-slate-400">
-                    <a href="{{ route('login') }}" class="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">
+                <p class="text-sm text-slate-600">
+                    <a href="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-700 font-semibold transition-colors">
                         Sign in instead →
                     </a>
                 </p>
@@ -188,29 +188,29 @@
         </div>
 
         <!-- Features List -->
-        <div class="mt-6 glass p-4 rounded-xl border border-slate-800/50">
-            <p class="text-sm text-slate-400 font-medium mb-3 text-center">What you'll get:</p>
+        <div class="mt-6 glass p-4 rounded-xl border border-slate-200">
+            <p class="text-sm text-slate-600 font-medium mb-3 text-center">What you'll get:</p>
             <div class="grid grid-cols-2 gap-3 text-xs text-slate-500">
                 <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-indigo-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
                     <span>5 API Connections</span>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-indigo-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
                     <span>AI-Powered Insights</span>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-indigo-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
                     <span>Data Fusion Engine</span>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-indigo-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
                     <span>Secure Storage</span>
